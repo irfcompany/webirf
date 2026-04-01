@@ -75,9 +75,9 @@ export function HeroSection() {
   const finalSideWidth = isMobile ? 36 : 22;
   const finalCenterWidth = isMobile ? 30 : 42;
   const finalCenterHeight = isMobile ? 68 : 70;
-  const finalGap = isMobile ? 8 : 16;
+  const finalGap = isMobile ? 14 : 16;
   const finalBorderRadius = isMobile ? 18 : 24;
-  const finalSideTranslateY = isMobile ? 0 : -15;
+  const finalSideTranslateY = isMobile ? 18 : -15;
 
   const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
   const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
@@ -123,7 +123,9 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
-                transform: `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
+                transform: isMobile
+                  ? `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}px)`
+                  : `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
             >
@@ -243,7 +245,9 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
-                transform: `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
+                transform: isMobile
+                  ? `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}px)`
+                  : `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
             >
