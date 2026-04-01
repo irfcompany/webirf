@@ -72,12 +72,12 @@ export function HeroSection() {
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
   // Responsive interpolations
-  const finalSideWidth = isMobile ? 26 : 22;
-  const finalCenterWidth = isMobile ? 48 : 42;
-  const finalCenterHeight = isMobile ? 88 : 70;
-  const finalGap = isMobile ? 10 : 16;
+  const finalSideWidth = isMobile ? 30 : 22;
+  const finalCenterWidth = isMobile ? 40 : 42;
+  const finalCenterHeight = isMobile ? 78 : 70;
+  const finalGap = isMobile ? 8 : 16;
   const finalBorderRadius = isMobile ? 18 : 24;
-  const finalSideTranslateY = isMobile ? -6 : -15;
+  const finalSideTranslateY = isMobile ? -4 : -15;
 
   const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
   const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
@@ -85,11 +85,11 @@ export function HeroSection() {
   const sideOpacity = imageProgress;
 
   const sideTranslateLeft = isMobile
-    ? -70 + imageProgress * 70
+    ? -48 + imageProgress * 40
     : -100 + imageProgress * 100;
 
   const sideTranslateRight = isMobile
-    ? 70 - imageProgress * 70
+    ? 48 - imageProgress * 40
     : 100 - imageProgress * 100;
 
   const borderRadius = imageProgress * finalBorderRadius;
