@@ -112,7 +112,7 @@ export function HeroSection() {
             style={{
               gap: `${gap}px`,
               padding: `${imageProgress * (isMobile ? 6 : 16)}px`,
-              paddingBottom: `${isMobile ? 18 + imageProgress * 18 : 60 + imageProgress * 40}px`,
+              paddingBottom: `${isMobile ? 10 + imageProgress * 12 : 60 + imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
