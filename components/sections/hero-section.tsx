@@ -72,12 +72,12 @@ export function HeroSection() {
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
   // Responsive interpolations
-  const finalSideWidth = isMobile ? 30 : 22;
-  const finalCenterWidth = isMobile ? 40 : 42;
-  const finalCenterHeight = isMobile ? 78 : 70;
+  const finalSideWidth = isMobile ? 31 : 22;
+  const finalCenterWidth = isMobile ? 38 : 42;
+  const finalCenterHeight = isMobile ? 68 : 70;
   const finalGap = isMobile ? 8 : 16;
   const finalBorderRadius = isMobile ? 18 : 24;
-  const finalSideTranslateY = isMobile ? -4 : -15;
+  const finalSideTranslateY = isMobile ? 0 : -15;
 
   const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
   const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
@@ -85,11 +85,11 @@ export function HeroSection() {
   const sideOpacity = imageProgress;
 
   const sideTranslateLeft = isMobile
-    ? -48 + imageProgress * 40
+    ? -38 + imageProgress * 38
     : -100 + imageProgress * 100;
 
   const sideTranslateRight = isMobile
-    ? 48 - imageProgress * 40
+    ? 38 - imageProgress * 38
     : 100 - imageProgress * 100;
 
   const borderRadius = imageProgress * finalBorderRadius;
@@ -111,8 +111,8 @@ export function HeroSection() {
             className="relative flex h-full w-full items-stretch justify-center"
             style={{
               gap: `${gap}px`,
-              padding: `${imageProgress * (isMobile ? 8 : 16)}px`,
-              paddingBottom: `${isMobile ? 28 + imageProgress * 24 : 60 + imageProgress * 40}px`,
+              padding: `${imageProgress * (isMobile ? 6 : 16)}px`,
+              paddingBottom: `${isMobile ? 18 + imageProgress * 18 : 60 + imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
