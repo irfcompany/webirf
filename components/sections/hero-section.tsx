@@ -65,39 +65,6 @@ export function HeroSection() {
     };
   }, []);
 
-  // Text fades out first (0 to 0.2)
-  const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
-
-  // Image transforms start after text fades (0.2 to 1)
-  const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
-
-  // Responsive interpolations
-  const finalSideWidth = isMobile ? 36 : 22;
-  const finalCenterWidth = isMobile ? 30 : 42;
-  const finalCenterHeight = isMobile ? 68 : 70;
-  const finalGap = isMobile ? 14 : 16;
-  const finalBorderRadius = isMobile ? 18 : 24;
-  const finalSideTranslateY = isMobile ? 18 : -15;
-
-  const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
-  const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
-  const sideWidth = imageProgress * finalSideWidth;
-  const sideOpacity = imageProgress;
-
-  const sideTranslateLeft = isMobile
-    ? -38 + imageProgress * 38
-    : -100 + imageProgress * 100;
-
-  const sideTranslateRight = isMobile
-    ? 38 - imageProgress * 38
-    : 100 - imageProgress * 100;
-
-  const borderRadius = imageProgress * finalBorderRadius;
-  const gap = imageProgress * finalGap;
-  const sideTranslateY = -(imageProgress * finalSideTranslateY);
-  const centerTranslateY = isMobile ? imageProgress * 100 : 0;
-
-  
   const scrollToContact = () => {
     const contactSection = document.getElementById("contacto");
     if (contactSection) {
@@ -105,16 +72,102 @@ export function HeroSection() {
     }
   };
 
+  // Desktop animation only
+  const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
+  const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
+
+  const finalSideWidth = 22;
+  const finalCenterWidth = 42;
+  const finalCenterHeight = 70;
+  const finalGap = 16;
+  const finalBorderRadius = 24;
+  const finalSideTranslateY = -15;
+
+  const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
+  const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
+  const sideWidth = imageProgress * finalSideWidth;
+  const sideOpacity = imageProgress;
+
+  const sideTranslateLeft = -100 + imageProgress * 100;
+  const sideTranslateRight = 100 - imageProgress * 100;
+
+  const borderRadius = imageProgress * finalBorderRadius;
+  const gap = imageProgress * finalGap;
+  const sideTranslateY = -(imageProgress * finalSideTranslateY);
+
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
       <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="flex h-full w-full items-center justify-center">
+        {/* MOBILE HERO */}
+        <div className="flex h-full w-full items-center justify-center md:hidden">
+          <div className="w-full px-3 pt-24 pb-6">
+            <div className="grid grid-cols-[0.95fr_1.1fr_0.95fr] items-start gap-3">
+              {/* Left column */}
+              <div className="flex flex-col gap-3 pt-6">
+                <div className="relative aspect-[3/7] overflow-hidden rounded-[26px]">
+                  <Image
+                    src="/images/hero-apoyo1.jpeg"
+                    alt="Personal técnico realizando mantenimiento en equipo de climatización industrial"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="relative aspect-[3/6] overflow-hidden rounded-[26px]">
+                  <Image
+                    src="/images/hero-apoyo2.jpeg"
+                    alt="Instalación de ductería y recubrimientos en nave industrial"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Center */}
+              <div className="pt-14">
+                <div className="relative aspect-[4/9] overflow-hidden rounded-[30px]">
+                  <Image
+                    src="/images/hero-principal.jpeg"
+                    alt="Sistema de ductería HVAC e industrial instalado en nave de producción"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Right column */}
+              <div className="flex flex-col gap-3 pt-6">
+                <div className="relative aspect-[3/7] overflow-hidden rounded-[26px]">
+                  <Image
+                    src="/images/hero-apoyo3.jpeg"
+                    alt="Personal técnico en recorrido de supervisión dentro de instalación industrial"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="relative aspect-[3/6] overflow-hidden rounded-[26px]">
+                  <Image
+                    src="/images/hero-apoyo4.jpeg"
+                    alt="Maniobra de grúa para montaje de estructura y equipo en obra industrial"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP HERO */}
+        <div className="hidden h-full w-full items-center justify-center md:flex">
           <div
             className="relative flex h-full w-full items-stretch justify-center"
             style={{
               gap: `${gap}px`,
-              padding: `${imageProgress * (isMobile ? 6 : 16)}px`,
-              paddingBottom: `${isMobile ? 10 + imageProgress * 12 : 60 + imageProgress * 40}px`,
+              padding: `${imageProgress * 16}px`,
+              paddingBottom: `${60 + imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
@@ -123,9 +176,7 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
-                transform: isMobile
-                  ? `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}px)`
-                  : `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
+                transform: `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
             >
@@ -136,15 +187,12 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                      flex: isMobile ? "0 0 auto" : img.span,
-                      height: isMobile ? "34vh" : "auto",
-                      minHeight: isMobile ? "220px" : undefined,
-                      maxHeight: isMobile ? "420px" : undefined,
+                      flex: img.span,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
                     <Image
-                      src={img.src || "/placeholder.svg"}
+                      src={img.src}
                       alt={img.alt}
                       fill
                       className="object-cover"
@@ -161,7 +209,6 @@ export function HeroSection() {
                 height: `${centerHeight}%`,
                 flex: "0 0 auto",
                 borderRadius: `${borderRadius}px`,
-                transform: `translateY(${centerTranslateY}px)`,
               }}
             >
               <Image
@@ -245,9 +292,7 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
-                transform: isMobile
-                  ? `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}px)`
-                  : `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
+                transform: `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
             >
@@ -258,15 +303,12 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                    flex: isMobile ? "0 0 auto" : img.span,
-                      height: isMobile ? "34vh" : "auto",
-                      minHeight: isMobile ? "220px" : undefined,
-                      maxHeight: isMobile ? "420px" : undefined,
+                      flex: img.span,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
                     <Image
-                      src={img.src || "/placeholder.svg"}
+                      src={img.src}
                       alt={img.alt}
                       fill
                       className="object-cover"
