@@ -11,14 +11,14 @@ export function GallerySection() {
   const rafRef = useRef<number | null>(null);
 
   const images = [
-    { src: "/images/galeria1.JPEG", alt: "Instalación de ductos HVAC" },
-    { src: "/images/galeria2.JPEG", alt: "Sistema de ductería industrial" },
-    { src: "/images/galeria3.JPEG", alt: "Trabajos de soldadura" },
-    { src: "/images/galeria4.JPEG", alt: "Planta industrial" },
-    { src: "/images/galeria5.JPEG", alt: "Estructuras metálicas" },
-    { src: "/images/galeria6.JPEG", alt: "Mantenimiento industrial" },
-    { src: "/images/galeria7.JPEG", alt: "Sistemas de refrigeración" },
-    { src: "/images/galeria8.JPEG", alt: "Instalaciones industriales" },
+    { src: "/images/galeria1.jpeg", alt: "Instalación de ductos HVAC" },
+    { src: "/images/galeria2.jpeg", alt: "Sistema de ductería industrial" },
+    { src: "/images/galeria3.jpeg", alt: "Trabajos de soldadura" },
+    { src: "/images/galeria4.jpeg", alt: "Planta industrial" },
+    { src: "/images/galeria5.jpeg", alt: "Estructuras metálicas" },
+    { src: "/images/galeria6.jpeg", alt: "Mantenimiento industrial" },
+    { src: "/images/galeria7.jpeg", alt: "Sistemas de refrigeración" },
+    { src: "/images/galeria8.jpeg", alt: "Instalaciones industriales" },
   ];
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const sectors = [
     name: "Comercial",
     description: "Oficinas, centros comerciales y retail",
     icon: Building2,
-    image: "/images/sectores2.JPEG",
+    image: "/images/sectores2.jpeg",
   },
   {
     id: 3,
@@ -30,14 +30,14 @@ const sectors = [
     name: "Mantenimiento",
     description: "Servicio preventivo y correctivo continuo",
     icon: Wrench,
-    image: "/images/sectores4.JPEG",
+    image: "/images/sectores4.jpeg",
   },
   {
     id: 5,
     name: "Proyectos especiales",
     description: "Soluciones a medida para necesidades únicas",
     icon: Sparkles,
-    image: "/images/sectores5.JPEG",
+    image: "/images/sectores5.jpeg",
   },
 ];
 

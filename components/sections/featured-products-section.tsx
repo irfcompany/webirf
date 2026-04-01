@@ -7,32 +7,32 @@ const services = [
   {
     title: "Ductería, aislamiento y recubrimientos",
     description: "Diseño, fabricación e instalación de ductería HVAC e industrial, aislamiento térmico para ductos y tuberías, y recubrimientos metálicos en aluminio, acero galvanizado e inoxidable para protección, acabado y desempeño operativo.",
-    image: "/images/servicios1.JPEG",
+    image: "/images/servicios1.jpeg",
   },
   {
     title: "HVAC y refrigeración",
     description: "Instalación, integración y mantenimiento de sistemas HVAC y refrigeración para procesos industriales, naves, áreas comerciales y soluciones especiales, priorizando control térmico, eficiencia energética y confiabilidad operativa.",
-    image: "/images/servicios2.JPEG",
+    image: "/images/servicios2.jpeg",
   },
   {
     title: "Fabricación y montaje",
     description: "Fabricación de componentes, estructuras y soluciones metálicas, además de maniobras y montaje en sitio para proyectos industriales, comerciales y requerimientos especiales con ejecución técnica precisa y ordenada.",
-    image: "/images/servicios3.JPEG",
+    image: "/images/servicios3.jpeg",
   },
   {
     title: "Corte industrial",
     description: "Servicio de mecanizado y corte mediante plasma CNC y oxicorte para fabricación de piezas, componentes y soluciones a medida, con enfoque en precisión, repetibilidad y cumplimiento de especificaciones técnicas.",
-    image: "/images/servicios4.JPEG",
+    image: "/images/servicios4.jpeg",
   },
   {
     title: "Mantenimiento industrial",
     description: "Mantenimiento preventivo y correctivo en instalaciones industriales, sistemas HVAC, ductería, recubrimientos y equipos relacionados, orientado a continuidad operativa, seguridad y respuesta efectiva en campo.",
-    image: "/images/servicios5.JPEG",
+    image: "/images/servicios5.jpeg",
   },
   {
     title: "Proyectos especiales",
     description: "Desarrollo e integración de soluciones especiales para necesidades fuera de estándar, combinando ingeniería aplicada, fabricación, montaje y adaptación técnica según el alcance y los requerimientos de cada proyecto.",
-    image: "/images/servicios6.JPEG",
+    image: "/images/servicios6.jpeg",
   },
 ];
 

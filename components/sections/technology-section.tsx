@@ -59,25 +59,25 @@ function ScrollRevealText({ text }: { text: string }) {
 
 const sideImages = [
   {
-    src: "/images/proyectos-header-apoyo1.JPEG",
+    src: "/images/proyectos-header-apoyo1.jpeg",
     alt: "Equipos HVAC industriales con ductería metálica y sistema de ventilación en área técnica",
     position: "left",
     span: 1,
   },
   {
-    src: "/images/proyectos-header-apoyo2.JPEG",
+    src: "/images/proyectos-header-apoyo2.jpeg",
     alt: "Salidas de ventilación y extracción en cubierta metálica para sistema HVAC industrial",
     position: "left",
     span: 1,
   },
   {
-    src: "/images/proyectos-header-apoyo3.JPEG",
+    src: "/images/proyectos-header-apoyo3.jpeg",
     alt: "Maniobra de traslado e instalación de ducto industrial de gran diámetro en sitio",
     position: "right",
     span: 1,
   },
   {
-    src: "/images/proyectos-header-apoyo4.JPEG",
+    src: "/images/proyectos-header-apoyo4.jpeg",
     alt: "Montaje de estructura y componente industrial durante maniobra de instalación en proyecto especial",
     position: "right",
     span: 1,
@@ -173,7 +173,7 @@ export function TechnologySection() {
               }}
             >
               <Image
-                src="/images/Proyectos-header.JPEG"
+                src="/images/Proyectos-header.jpeg"
                 alt="Instalación de ductería industrial galvanizada en línea de producción dentro de nave industrial"
                 fill
                 className="object-cover"

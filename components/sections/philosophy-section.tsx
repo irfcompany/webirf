@@ -98,8 +98,8 @@ export function PhilosophySection() {
                 }}
               >
                 <Image
-                  src="/images/seccion2-lateralizquierda.JPEG"
-                  alt="Instalación de sistemas de ductos industriales"
+                  src="/images/seccion2-lateralizquierda.jpeg"
+                  alt="Ductos industriales"
                   fill
                   className="object-cover"
                 />
@@ -121,7 +121,7 @@ export function PhilosophySection() {
                 }}
               >
                 <Image
-                  src="/images/seccion2-lateralderecha.JPEG"
+                  src="/images/seccion2-lateralderecha.jpeg"
                   alt="Aislamiento térmico industrial"
                   fill
                   className="object-cover"

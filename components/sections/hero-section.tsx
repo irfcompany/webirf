@@ -7,41 +7,25 @@ const word = "IRF";
 
 const sideImages = [
   {
-<<<<<<< HEAD
     src: "/images/hero-apoyo1.jpeg",
-=======
-    src: "/images/hero-apoyo1.JPEG",
->>>>>>> fe677e4fc8b6e9cca672f87d15c5a2dfabc8c17b
     alt: "Personal técnico realizando mantenimiento en equipo de climatización industrial",
     position: "left",
     span: 1,
   },
   {
-<<<<<<< HEAD
     src: "/images/hero-apoyo2.jpeg",
-=======
-    src: "/images/hero-apoyo2.JPEG",
->>>>>>> fe677e4fc8b6e9cca672f87d15c5a2dfabc8c17b
     alt: "Instalación de ductería y recubrimientos en nave industrial",
     position: "left",
     span: 1,
   },
   {
-<<<<<<< HEAD
     src: "/images/hero-apoyo3.jpeg",
-=======
-    src: "/images/hero-apoyo3.JPEG",
->>>>>>> fe677e4fc8b6e9cca672f87d15c5a2dfabc8c17b
     alt: "Personal técnico en recorrido de supervisión dentro de instalación industrial",
     position: "right",
     span: 1,
   },
   {
-<<<<<<< HEAD
     src: "/images/hero-apoyo4.jpeg",
-=======
-    src: "/images/hero-apoyo4.JPEG",
->>>>>>> fe677e4fc8b6e9cca672f87d15c5a2dfabc8c17b
     alt: "Maniobra de grúa para montaje de estructura y equipo en obra industrial",
     position: "right",
     span: 1,
@@ -147,11 +131,7 @@ export function HeroSection() {
               }}
             >
               <Image
-<<<<<<< HEAD
                 src="/images/hero-principal.jpeg"
-=======
-                src="/images/hero-principal.JPEG"
->>>>>>> fe677e4fc8b6e9cca672f87d15c5a2dfabc8c17b
                 alt="Sistema de ductería HVAC e industrial instalado en nave de producción"
                 fill
                 className="object-cover"
