@@ -95,7 +95,7 @@ export function HeroSection() {
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
   const sideTranslateY = -(imageProgress * finalSideTranslateY);
-  const centerTranslateY = isMobile ? imageProgress * 26 : 0;
+  const centerTranslateY = isMobile ? imageProgress * 80 : 0;
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contacto");
