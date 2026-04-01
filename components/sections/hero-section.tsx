@@ -133,7 +133,10 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                      flex: img.span,
+                      flex: isMobile ? "0 0 auto" : img.span,
+                      height: isMobile ? "34vh" : "auto",
+                      minHeight: isMobile ? "220px" : undefined,
+                      maxHeight: isMobile ? "420px" : undefined,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
@@ -250,7 +253,10 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                      flex: img.span,
+                    flex: isMobile ? "0 0 auto" : img.span,
+                      height: isMobile ? "34vh" : "auto",
+                      minHeight: isMobile ? "220px" : undefined,
+                      maxHeight: isMobile ? "420px" : undefined,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
