@@ -35,8 +35,13 @@ const sideImages = [
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
 
@@ -48,30 +53,48 @@ export function HeroSection() {
       setScrollProgress(progress);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleResize();
     handleScroll();
 
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   // Text fades out first (0 to 0.2)
-  const textOpacity = Math.max(0, 1 - (scrollProgress / 0.2));
+  const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
 
   // Image transforms start after text fades (0.2 to 1)
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
-  // Smooth interpolations
-  const centerWidth = 100 - (imageProgress * 58);
-  const centerHeight = 100 - (imageProgress * 30);
-  const sideWidth = imageProgress * 22;
+  // Responsive interpolations
+  const finalSideWidth = isMobile ? 26 : 22;
+  const finalCenterWidth = isMobile ? 48 : 42;
+  const finalCenterHeight = isMobile ? 88 : 70;
+  const finalGap = isMobile ? 10 : 16;
+  const finalBorderRadius = isMobile ? 18 : 24;
+  const finalSideTranslateY = isMobile ? -6 : -15;
+
+  const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
+  const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
+  const sideWidth = imageProgress * finalSideWidth;
   const sideOpacity = imageProgress;
-  const sideTranslateLeft = -100 + (imageProgress * 100);
-  const sideTranslateRight = 100 - (imageProgress * 100);
-  const borderRadius = imageProgress * 24;
-  const gap = imageProgress * 16;
-  const sideTranslateY = -(imageProgress * 15);
+
+  const sideTranslateLeft = isMobile
+    ? -70 + imageProgress * 70
+    : -100 + imageProgress * 100;
+
+  const sideTranslateRight = isMobile
+    ? 70 - imageProgress * 70
+    : 100 - imageProgress * 100;
+
+  const borderRadius = imageProgress * finalBorderRadius;
+  const gap = imageProgress * finalGap;
+  const sideTranslateY = -(imageProgress * finalSideTranslateY);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contacto");
@@ -81,16 +104,17 @@ export function HeroSection() {
   };
 
   return (
-    <section id="inicio" ref={sectionRef} className="relative bg-background overflow-x-clip">
-      {/* Sticky container for scroll animation */}
+    <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full w-full items-center justify-center">
-          {/* Bento Grid Container */}
           <div
             className="relative flex h-full w-full items-stretch justify-center"
-            style={{ gap: `${gap}px`, padding: `${imageProgress * 16}px`, paddingBottom: `${60 + (imageProgress * 40)}px` }}
+            style={{
+              gap: `${gap}px`,
+              padding: `${imageProgress * (isMobile ? 8 : 16)}px`,
+              paddingBottom: `${isMobile ? 28 + imageProgress * 24 : 60 + imageProgress * 40}px`,
+            }}
           >
-
             {/* Left Column */}
             <div
               className="flex flex-col will-change-transform"
@@ -101,23 +125,25 @@ export function HeroSection() {
                 opacity: sideOpacity,
               }}
             >
-              {sideImages.filter(img => img.position === "left").map((img, idx) => (
-                <div
-                  key={idx}
-                  className="relative overflow-hidden will-change-transform"
-                  style={{
-                    flex: img.span,
-                    borderRadius: `${borderRadius}px`,
-                  }}
-                >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {sideImages
+                .filter((img) => img.position === "left")
+                .map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="relative overflow-hidden will-change-transform"
+                    style={{
+                      flex: img.span,
+                      borderRadius: `${borderRadius}px`,
+                    }}
+                  >
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
             </div>
 
             {/* Main Hero Image - Center */}
@@ -139,17 +165,18 @@ export function HeroSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent" />
 
-              {/* Overlay Text - Fades out first */}
+              {/* Overlay Text */}
               <div
-                className="absolute inset-0 flex flex-col items-center justify-end pb-16 md:pb-20 px-6"
+                className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-16 md:pb-20"
                 style={{ opacity: textOpacity }}
               >
-                {/* Eyebrow */}
-                <p className="text-xs uppercase tracking-widest text-white/70 mb-4 animate-[slideUp_0.8s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.1s' }}>
+                <p
+                  className="mb-4 animate-[slideUp_0.8s_ease-out_forwards] text-xs uppercase tracking-widest text-white/70 opacity-0"
+                  style={{ animationDelay: "0.1s" }}
+                >
                   Infraestructura, ingeniería y ejecución
                 </p>
 
-                {/* Main Brand */}
                 <h1 className="text-[28vw] font-bold leading-[0.8] tracking-tighter text-white md:text-[22vw]">
                   {word.split("").map((letter, index) => (
                     <span
@@ -157,8 +184,8 @@ export function HeroSection() {
                       className="inline-block animate-[slideUp_0.8s_ease-out_forwards] opacity-0"
                       style={{
                         animationDelay: `${index * 0.08}s`,
-                        transition: 'all 1.5s',
-                        transitionTimingFunction: 'cubic-bezier(0.86, 0, 0.07, 1)',
+                        transition: "all 1.5s",
+                        transitionTimingFunction: "cubic-bezier(0.86, 0, 0.07, 1)",
                       }}
                     >
                       {letter}
@@ -166,29 +193,37 @@ export function HeroSection() {
                   ))}
                 </h1>
 
-                {/* Headline */}
-                <h2 className="mt-4 text-center text-2xl font-medium text-white md:text-3xl lg:text-4xl animate-[slideUp_0.8s_ease-out_forwards] opacity-0 max-w-2xl" style={{ animationDelay: '0.35s' }}>
+                <h2
+                  className="mt-4 max-w-2xl animate-[slideUp_0.8s_ease-out_forwards] text-center text-2xl font-medium text-white opacity-0 md:text-3xl lg:text-4xl"
+                  style={{ animationDelay: "0.35s" }}
+                >
                   Soluciones integrales para la industria
                 </h2>
 
-                {/* Subtitle - in safe container */}
-                <div className="mt-6 w-full max-w-3xl px-4 animate-[slideUp_0.8s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.5s' }}>
-                  <p className="text-center text-sm text-white/80 md:text-base lg:text-lg leading-relaxed">
-                    Ductería HVAC e industrial, aislamiento térmico, recubrimientos, refrigeración, fabricación, montaje, mecanizado CNC, oxicorte, plasma y mantenimiento industrial con enfoque en calidad, capacidad técnica y correcta ejecución.
+                <div
+                  className="mt-6 w-full max-w-3xl animate-[slideUp_0.8s_ease-out_forwards] px-4 opacity-0"
+                  style={{ animationDelay: "0.5s" }}
+                >
+                  <p className="text-center text-sm leading-relaxed text-white/80 md:text-base lg:text-lg">
+                    Ductería HVAC e industrial, aislamiento térmico, recubrimientos, refrigeración,
+                    fabricación, montaje, mecanizado CNC, oxicorte, plasma y mantenimiento industrial
+                    con enfoque en calidad, capacidad técnica y correcta ejecución.
                   </p>
                 </div>
 
-                {/* CTAs */}
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row animate-[slideUp_0.8s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.65s' }}>
+                <div
+                  className="mt-8 flex flex-col gap-4 animate-[slideUp_0.8s_ease-out_forwards] opacity-0 sm:flex-row"
+                  style={{ animationDelay: "0.65s" }}
+                >
                   <button
                     onClick={scrollToContact}
-                    className="px-8 py-3 bg-white text-foreground font-medium rounded-full hover:bg-white/90 transition-all"
+                    className="rounded-full bg-white px-8 py-3 font-medium text-foreground transition-all hover:bg-white/90"
                   >
                     Solicitar cotización
                   </button>
                   <a
                     href="#proyectos"
-                    className="px-8 py-3 bg-white/20 backdrop-blur-sm text-white font-medium rounded-full hover:bg-white/30 transition-all border border-white/30"
+                    className="rounded-full border border-white/30 bg-white/20 px-8 py-3 font-medium text-white backdrop-blur-sm transition-all hover:bg-white/30"
                   >
                     Ver proyectos
                   </a>
@@ -206,30 +241,30 @@ export function HeroSection() {
                 opacity: sideOpacity,
               }}
             >
-              {sideImages.filter(img => img.position === "right").map((img, idx) => (
-                <div
-                  key={idx}
-                  className="relative overflow-hidden will-change-transform"
-                  style={{
-                    flex: img.span,
-                    borderRadius: `${borderRadius}px`,
-                  }}
-                >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {sideImages
+                .filter((img) => img.position === "right")
+                .map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="relative overflow-hidden will-change-transform"
+                    style={{
+                      flex: img.span,
+                      borderRadius: `${borderRadius}px`,
+                    }}
+                  >
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
             </div>
-
           </div>
         </div>
       </div>
 
-      {/* Scroll space to enable animation */}
       <div className="h-[200vh]" />
     </section>
   );
