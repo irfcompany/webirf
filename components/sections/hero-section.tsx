@@ -97,6 +97,10 @@ export function HeroSection() {
   const sideTranslateY = -(imageProgress * finalSideTranslateY);
   const centerTranslateY = isMobile ? imageProgress * 100 : 0;
 
+  const mobileCenterHeightPx = 520;
+  const mobileSideColumnHeightPx = 520;
+  const mobileSideCardHeight = (mobileSideColumnHeightPx - gap) / 2;
+
   const scrollToContact = () => {
     const contactSection = document.getElementById("contacto");
     if (contactSection) {
@@ -122,6 +126,7 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
+                height: isMobile ? `${mobileSideColumnHeightPx}px` : "auto",
                 transform: `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
@@ -134,9 +139,7 @@ export function HeroSection() {
                     className="relative overflow-hidden will-change-transform"
                     style={{
                       flex: isMobile ? "0 0 auto" : img.span,
-                      height: isMobile ? "34vh" : "auto",
-                      minHeight: isMobile ? "220px" : undefined,
-                      maxHeight: isMobile ? "420px" : undefined,
+                      height: isMobile ? `${mobileSideCardHeight}px` : "auto",
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
@@ -155,7 +158,7 @@ export function HeroSection() {
               className="relative overflow-hidden will-change-transform"
               style={{
                 width: `${centerWidth}%`,
-                height: `${centerHeight}%`,
+                height: isMobile ? `${mobileCenterHeightPx}px` : `${centerHeight}%`,
                 flex: "0 0 auto",
                 borderRadius: `${borderRadius}px`,
                 transform: `translateY(${centerTranslateY}px)`,
@@ -242,6 +245,7 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
+                height: isMobile ? `${mobileSideColumnHeightPx}px` : "auto",
                 transform: `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
@@ -253,10 +257,8 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                    flex: isMobile ? "0 0 auto" : img.span,
-                      height: isMobile ? "34vh" : "auto",
-                      minHeight: isMobile ? "220px" : undefined,
-                      maxHeight: isMobile ? "420px" : undefined,
+                      flex: isMobile ? "0 0 auto" : img.span,
+                      height: isMobile ? `${mobileSideCardHeight}px` : "auto",
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
