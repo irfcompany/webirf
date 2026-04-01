@@ -59,25 +59,25 @@ function ScrollRevealText({ text }: { text: string }) {
 
 const sideImages = [
   {
-    src: "/images/proyectos-header-apoyo1.jpeg",
+    src: "/images/Proyectos-header-apoyo1.jpeg",
     alt: "Equipos HVAC industriales con ductería metálica y sistema de ventilación en área técnica",
     position: "left",
     span: 1,
   },
   {
-    src: "/images/proyectos-header-apoyo2.jpeg",
+    src: "/images/Proyectos-header-apoyo2.jpeg",
     alt: "Salidas de ventilación y extracción en cubierta metálica para sistema HVAC industrial",
     position: "left",
     span: 1,
   },
   {
-    src: "/images/proyectos-header-apoyo3.jpeg",
+    src: "/images/Proyectos-header-apoyo3.jpeg",
     alt: "Maniobra de traslado e instalación de ducto industrial de gran diámetro en sitio",
     position: "right",
     span: 1,
   },
   {
-    src: "/images/proyectos-header-apoyo4.jpeg",
+    src: "/images/Proyectos-header-apoyo4.jpeg",
     alt: "Montaje de estructura y componente industrial durante maniobra de instalación en proyecto especial",
     position: "right",
     span: 1,
