@@ -72,8 +72,8 @@ export function HeroSection() {
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
   // Responsive interpolations
-  const finalSideWidth = isMobile ? 31 : 22;
-  const finalCenterWidth = isMobile ? 38 : 42;
+  const finalSideWidth = isMobile ? 36 : 22;
+  const finalCenterWidth = isMobile ? 30 : 42;
   const finalCenterHeight = isMobile ? 68 : 70;
   const finalGap = isMobile ? 8 : 16;
   const finalBorderRadius = isMobile ? 18 : 24;
@@ -95,7 +95,7 @@ export function HeroSection() {
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
   const sideTranslateY = -(imageProgress * finalSideTranslateY);
-  const centerTranslateY = isMobile ? imageProgress * 80 : 0;
+  const centerTranslateY = isMobile ? imageProgress * 100 : 0;
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contacto");
