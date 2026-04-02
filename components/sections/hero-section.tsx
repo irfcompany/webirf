@@ -49,7 +49,6 @@ export function HeroSection() {
       const scrollableHeight = window.innerHeight * 2;
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
-
       setScrollProgress(progress);
     };
 
@@ -72,14 +71,31 @@ export function HeroSection() {
     }
   };
 
+  // Text fades out first (0 to 0.2)
   const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
+
+  // Image transforms start after text fades (0.2 to 1)
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
-  const finalCenterWidth = isMobile ? 31 : 42;
-  const finalCenterHeight = isMobile ? 46 : 70;
-  const finalSideWidth = isMobile ? 28 : 22;
-  const finalGap = isMobile ? 10 : 16;
-  const finalBorderRadius = isMobile ? 22 : 24;
+  // DESKTOP values
+  const desktopCenterWidth = 42;
+  const desktopCenterHeight = 70;
+  const desktopSideWidth = 22;
+  const desktopGap = 16;
+  const desktopBorderRadius = 24;
+
+  // MOBILE values (fuertes, para que sí se note)
+  const mobileCenterWidth = 28;
+  const mobileCenterHeight = 40;
+  const mobileSideWidth = 31;
+  const mobileGap = 12;
+  const mobileBorderRadius = 22;
+
+  const finalCenterWidth = isMobile ? mobileCenterWidth : desktopCenterWidth;
+  const finalCenterHeight = isMobile ? mobileCenterHeight : desktopCenterHeight;
+  const finalSideWidth = isMobile ? mobileSideWidth : desktopSideWidth;
+  const finalGap = isMobile ? mobileGap : desktopGap;
+  const finalBorderRadius = isMobile ? mobileBorderRadius : desktopBorderRadius;
 
   const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
   const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
@@ -87,18 +103,19 @@ export function HeroSection() {
   const sideOpacity = imageProgress;
 
   const sideTranslateLeft = isMobile
-    ? -92 + imageProgress * 92
+    ? -86 + imageProgress * 86
     : -100 + imageProgress * 100;
 
   const sideTranslateRight = isMobile
-    ? 92 - imageProgress * 92
+    ? 86 - imageProgress * 86
     : 100 - imageProgress * 100;
 
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
 
-  const sideTranslateY = isMobile ? imageProgress * 66 : -(imageProgress * 15);
-  const centerTranslateY = isMobile ? imageProgress * 54 : 0;
+  // Aquí está el cambio fuerte en móvil
+  const sideTranslateY = isMobile ? imageProgress * 110 : -(imageProgress * 15);
+  const centerTranslateY = isMobile ? imageProgress * 88 : 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
@@ -108,8 +125,8 @@ export function HeroSection() {
             className="relative flex h-full w-full items-stretch justify-center"
             style={{
               gap: `${gap}px`,
-              padding: `${imageProgress * (isMobile ? 10 : 16)}px`,
-              paddingBottom: `${isMobile ? 4 + imageProgress * 4 : 60 + imageProgress * 40}px`,
+              padding: `${imageProgress * (isMobile ? 8 : 16)}px`,
+              paddingBottom: `${isMobile ? 0 : 60 + imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
@@ -132,13 +149,13 @@ export function HeroSection() {
                     className="relative overflow-hidden will-change-transform"
                     style={{
                       flex: isMobile ? "0 0 auto" : img.span,
-                      aspectRatio: isMobile ? "3 / 4.1" : undefined,
-                      minHeight: isMobile ? "170px" : undefined,
+                      aspectRatio: isMobile ? "3 / 3.7" : undefined,
+                      minHeight: isMobile ? "210px" : undefined,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
                     <Image
-                      src={img.src || "/placeholder.svg"}
+                      src={img.src}
                       alt={img.alt}
                       fill
                       className="object-cover"
@@ -254,13 +271,13 @@ export function HeroSection() {
                     className="relative overflow-hidden will-change-transform"
                     style={{
                       flex: isMobile ? "0 0 auto" : img.span,
-                      aspectRatio: isMobile ? "3 / 4.1" : undefined,
-                      minHeight: isMobile ? "170px" : undefined,
+                      aspectRatio: isMobile ? "3 / 3.7" : undefined,
+                      minHeight: isMobile ? "210px" : undefined,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
                     <Image
-                      src={img.src || "/placeholder.svg"}
+                      src={img.src}
                       alt={img.alt}
                       fill
                       className="object-cover"
