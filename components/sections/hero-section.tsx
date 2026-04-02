@@ -81,9 +81,9 @@ export function HeroSection() {
   const desktopGap = 16;
   const desktopBorderRadius = 24;
 
-  // Mobile - corrección fuerte
-  const mobileCenterWidth = 26;
-  const mobileCenterHeight = 34;
+  // Mobile
+  const mobileCenterWidth = 24;
+  const mobileCenterHeight = 30;
   const mobileSideWidth = 33;
   const mobileGap = 14;
   const mobileBorderRadius = 22;
@@ -110,9 +110,9 @@ export function HeroSection() {
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
 
-  // Aquí bajamos mucho más, y el centro aún más que las laterales
-  const sideTranslateY = isMobile ? imageProgress * 145 : -(imageProgress * 15);
-  const centerTranslateY = isMobile ? imageProgress * 125 : 0;
+  // Laterales bajan, pero el centro baja mucho más
+  const sideTranslateY = isMobile ? imageProgress * 150 : -(imageProgress * 15);
+  const centerTranslateY = isMobile ? imageProgress * 190 : 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
@@ -159,8 +159,7 @@ export function HeroSection() {
                       style={
                         isMobile
                           ? {
-                              objectPosition:
-                                idx === 0 ? "62% center" : "center center",
+                              objectPosition: idx === 0 ? "62% center" : "center center",
                             }
                           : undefined
                       }
@@ -288,8 +287,7 @@ export function HeroSection() {
                       style={
                         isMobile
                           ? {
-                              objectPosition:
-                                idx === 0 ? "38% center" : "center center",
+                              objectPosition: idx === 0 ? "38% center" : "center center",
                             }
                           : undefined
                       }
