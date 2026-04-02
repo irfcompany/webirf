@@ -78,19 +78,31 @@ export function HeroSection() {
   // Image transforms start after text fades (0.2 to 1)
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
-  // Desktop original behavior
-  const centerWidth = 100 - imageProgress * 58;
-  const centerHeight = 100 - imageProgress * 30;
-  const sideWidth = imageProgress * (isMobile ? 30 : 22);
-  const sideOpacity = imageProgress;
-  const sideTranslateLeft = -100 + imageProgress * 100;
-  const sideTranslateRight = 100 - imageProgress * 100;
-  const borderRadius = imageProgress * 24;
-  const gap = imageProgress * (isMobile ? 28 : 16);
+  // Desktop keeps original behavior, mobile gets refined values
+  const finalCenterWidth = isMobile ? 34 : 42;
+  const finalCenterHeight = isMobile ? 58 : 70;
+  const finalSideWidth = isMobile ? 25 : 22;
+  const finalGap = isMobile ? 10 : 16;
+  const finalBorderRadius = isMobile ? 22 : 24;
 
-  // Stronger mobile separation
-  const sideTranslateY = isMobile ? imageProgress * 42 : -(imageProgress * 15);
-  const centerTranslateY = isMobile ? imageProgress * 30 : 0;
+  const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
+  const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
+  const sideWidth = imageProgress * finalSideWidth;
+  const sideOpacity = imageProgress;
+
+  const sideTranslateLeft = isMobile
+    ? -88 + imageProgress * 88
+    : -100 + imageProgress * 100;
+
+  const sideTranslateRight = isMobile
+    ? 88 - imageProgress * 88
+    : 100 - imageProgress * 100;
+
+  const borderRadius = imageProgress * finalBorderRadius;
+  const gap = imageProgress * finalGap;
+
+  const sideTranslateY = isMobile ? imageProgress * 34 : -(imageProgress * 15);
+  const centerTranslateY = isMobile ? imageProgress * 22 : 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
@@ -100,8 +112,8 @@ export function HeroSection() {
             className="relative flex h-full w-full items-stretch justify-center"
             style={{
               gap: `${gap}px`,
-              padding: `${imageProgress * 16}px`,
-              paddingBottom: `${60 + imageProgress * 40}px`,
+              padding: `${imageProgress * (isMobile ? 8 : 16)}px`,
+              paddingBottom: `${isMobile ? 28 + imageProgress * 18 : 60 + imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
@@ -123,7 +135,9 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                      flex: img.span,
+                      flex: isMobile ? "0 0 auto" : img.span,
+                      aspectRatio: isMobile ? "3 / 4.6" : undefined,
+                      minHeight: isMobile ? "180px" : undefined,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
@@ -132,6 +146,7 @@ export function HeroSection() {
                       alt={img.alt}
                       fill
                       className="object-cover"
+                      style={isMobile ? { objectPosition: "center center" } : undefined}
                     />
                   </div>
                 ))}
@@ -242,7 +257,9 @@ export function HeroSection() {
                     key={idx}
                     className="relative overflow-hidden will-change-transform"
                     style={{
-                      flex: img.span,
+                      flex: isMobile ? "0 0 auto" : img.span,
+                      aspectRatio: isMobile ? "3 / 4.6" : undefined,
+                      minHeight: isMobile ? "180px" : undefined,
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
@@ -251,6 +268,7 @@ export function HeroSection() {
                       alt={img.alt}
                       fill
                       className="object-cover"
+                      style={isMobile ? { objectPosition: "center center" } : undefined}
                     />
                   </div>
                 ))}
