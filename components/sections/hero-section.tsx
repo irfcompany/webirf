@@ -72,17 +72,13 @@ export function HeroSection() {
     }
   };
 
-  // Text fades out first (0 to 0.2)
   const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
-
-  // Image transforms start after text fades (0.2 to 1)
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
-  // Responsive values
   const finalCenterWidth = isMobile ? 31 : 42;
   const finalCenterHeight = isMobile ? 46 : 70;
-  const finalSideWidth = isMobile ? 24 : 22;
-  const finalGap = isMobile ? 12 : 16;
+  const finalSideWidth = isMobile ? 28 : 22;
+  const finalGap = isMobile ? 10 : 16;
   const finalBorderRadius = isMobile ? 22 : 24;
 
   const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
@@ -101,9 +97,8 @@ export function HeroSection() {
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
 
-  // Bajar más todo en móvil
-  const sideTranslateY = isMobile ? imageProgress * 78 : -(imageProgress * 15);
-  const centerTranslateY = isMobile ? imageProgress * 64 : 0;
+  const sideTranslateY = isMobile ? imageProgress * 66 : -(imageProgress * 15);
+  const centerTranslateY = isMobile ? imageProgress * 54 : 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
@@ -114,7 +109,7 @@ export function HeroSection() {
             style={{
               gap: `${gap}px`,
               padding: `${imageProgress * (isMobile ? 10 : 16)}px`,
-              paddingBottom: `${isMobile ? 8 + imageProgress * 8 : 60 + imageProgress * 40}px`,
+              paddingBottom: `${isMobile ? 4 + imageProgress * 4 : 60 + imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
