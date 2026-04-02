@@ -10,37 +10,37 @@ function ScrollRevealText({ text }: { text: string }) {
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
-      
+
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       const startOffset = windowHeight * 0.9;
       const endOffset = windowHeight * 0.1;
-      
+
       const totalDistance = startOffset - endOffset;
       const currentPosition = startOffset - rect.top;
-      
+
       const newProgress = Math.max(0, Math.min(1, currentPosition / totalDistance));
       setProgress(newProgress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const words = text.split(" ");
-  
+
   return (
     <p
       ref={containerRef}
-      className="text-2xl font-semibold leading-snug md:text-3xl lg:text-4xl max-w-4xl mx-auto"
+      className="mx-auto max-w-4xl text-2xl font-semibold leading-snug md:text-3xl lg:text-4xl"
     >
       {words.map((word, index) => {
         const wordProgress = index / words.length;
         const isRevealed = progress > wordProgress;
-        
+
         return (
           <span
             key={index}
@@ -49,7 +49,8 @@ function ScrollRevealText({ text }: { text: string }) {
               color: isRevealed ? "var(--foreground)" : "#cbd5e1",
             }}
           >
-            {word}{index < words.length - 1 ? " " : ""}
+            {word}
+            {index < words.length - 1 ? " " : ""}
           </span>
         );
       })}
@@ -87,54 +88,77 @@ const sideImages = [
 export function TechnologySection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  
-  const descriptionText = "Proyectos reales en ductería, HVAC, aislamiento, fabricación, montaje y soluciones industriales ejecutadas con enfoque en calidad y cumplimiento.";
+  const [isMobile, setIsMobile] = useState(false);
+
+  const descriptionText =
+    "Proyectos reales en ductería, HVAC, aislamiento, fabricación, montaje y soluciones industriales ejecutadas con enfoque en calidad y cumplimiento.";
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      
+
       const rect = sectionRef.current.getBoundingClientRect();
       const scrollableHeight = window.innerHeight * 2;
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
-      
+
       setScrollProgress(progress);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleResize();
     handleScroll();
-    
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Image transforms start after title fades (0.2 to 1)
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
-  
-  // Smooth interpolations
-  const centerWidth = 100 - (imageProgress * 58);
-  const sideWidth = imageProgress * 22;
+
+  // Ajustes: menos margen en móvil, gap menor y laterales un poco más anchas
+  const finalCenterWidth = isMobile ? 42 : 42;
+  const finalSideWidth = isMobile ? 26 : 22;
+  const finalGap = isMobile ? 8 : 16;
+  const finalBorderRadius = isMobile ? 20 : 24;
+
+  const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
+  const sideWidth = imageProgress * finalSideWidth;
   const sideOpacity = imageProgress;
-  const sideTranslateLeft = -100 + (imageProgress * 100);
-  const sideTranslateRight = 100 - (imageProgress * 100);
-  const borderRadius = imageProgress * 24;
-  const gap = imageProgress * 16;
+
+  const sideTranslateLeft = isMobile
+    ? -88 + imageProgress * 88
+    : -100 + imageProgress * 100;
+
+  const sideTranslateRight = isMobile
+    ? 88 - imageProgress * 88
+    : 100 - imageProgress * 100;
+
+  const borderRadius = imageProgress * finalBorderRadius;
+  const gap = imageProgress * finalGap;
 
   return (
-    <section id="proyectos" ref={sectionRef} className="relative bg-primary overflow-x-clip">
+    <section id="proyectos" ref={sectionRef} className="relative overflow-x-clip bg-primary">
       {/* Sticky container for scroll animation */}
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full w-full items-center justify-center">
           {/* Bento Grid Container */}
-          <div 
+          <div
             className="relative flex h-full w-full items-stretch justify-center"
-            style={{ gap: `${gap}px`, padding: `${imageProgress * 16}px` }}
+            style={{
+              gap: `${gap}px`,
+              padding: `${imageProgress * (isMobile ? 8 : 16)}px`,
+            }}
           >
-            
             {/* Left Column */}
-            <div 
+            <div
               className="flex flex-col will-change-transform"
               style={{
                 width: `${sideWidth}%`,
@@ -143,27 +167,29 @@ export function TechnologySection() {
                 opacity: sideOpacity,
               }}
             >
-              {sideImages.filter(img => img.position === "left").map((img, idx) => (
-                <div 
-                  key={idx} 
-                  className="relative overflow-hidden will-change-transform"
-                  style={{
-                    flex: img.span,
-                    borderRadius: `${borderRadius}px`,
-                  }}
-                >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {sideImages
+                .filter((img) => img.position === "left")
+                .map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="relative overflow-hidden will-change-transform"
+                    style={{
+                      flex: img.span,
+                      borderRadius: `${borderRadius}px`,
+                    }}
+                  >
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
             </div>
 
             {/* Main Center Image */}
-            <div 
+            <div
               className="relative overflow-hidden will-change-transform"
               style={{
                 width: `${centerWidth}%`,
@@ -179,18 +205,21 @@ export function TechnologySection() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-primary/40" />
-              
+
               {/* Title Text - Safe container, no overlap */}
               <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                <p className="text-sm uppercase tracking-widest text-white/70 mb-4">Proyectos</p>
-                <h2 className="max-w-2xl font-medium leading-tight tracking-tight text-white text-3xl md:text-5xl lg:text-6xl">
+                <p className="mb-4 text-sm uppercase tracking-widest text-white/70">Proyectos</p>
+                <h2 className="max-w-2xl text-3xl font-medium leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
                   {["Una", "muestra", "de", "nuestro", "trabajo."].map((word, index) => {
                     const wordFadeStart = index * 0.04;
                     const wordFadeEnd = wordFadeStart + 0.1;
-                    const wordProgress = Math.max(0, Math.min(1, (scrollProgress - wordFadeStart) / (wordFadeEnd - wordFadeStart)));
+                    const wordProgress = Math.max(
+                      0,
+                      Math.min(1, (scrollProgress - wordFadeStart) / (wordFadeEnd - wordFadeStart))
+                    );
                     const wordOpacity = 1 - wordProgress;
                     const wordBlur = wordProgress * 10;
-                    
+
                     return (
                       <span
                         key={index}
@@ -198,8 +227,8 @@ export function TechnologySection() {
                         style={{
                           opacity: wordOpacity,
                           filter: `blur(${wordBlur}px)`,
-                          transition: 'opacity 0.1s linear, filter 0.1s linear',
-                          marginRight: '0.25em',
+                          transition: "opacity 0.1s linear, filter 0.1s linear",
+                          marginRight: "0.25em",
                         }}
                       >
                         {word}
@@ -211,7 +240,7 @@ export function TechnologySection() {
             </div>
 
             {/* Right Column */}
-            <div 
+            <div
               className="flex flex-col will-change-transform"
               style={{
                 width: `${sideWidth}%`,
@@ -220,25 +249,26 @@ export function TechnologySection() {
                 opacity: sideOpacity,
               }}
             >
-              {sideImages.filter(img => img.position === "right").map((img, idx) => (
-                <div 
-                  key={idx} 
-                  className="relative overflow-hidden will-change-transform"
-                  style={{
-                    flex: img.span,
-                    borderRadius: `${borderRadius}px`,
-                  }}
-                >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {sideImages
+                .filter((img) => img.position === "right")
+                .map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="relative overflow-hidden will-change-transform"
+                    style={{
+                      flex: img.span,
+                      borderRadius: `${borderRadius}px`,
+                    }}
+                  >
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
             </div>
-
           </div>
         </div>
       </div>
