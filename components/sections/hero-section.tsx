@@ -35,8 +35,13 @@ const sideImages = [
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
 
@@ -48,30 +53,17 @@ export function HeroSection() {
       setScrollProgress(progress);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleResize();
     handleScroll();
 
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Text fades out first (0 to 0.2)
-  const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
-
-  // Image transforms start after text fades (0.2 to 1)
-  const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
-
-  // Smooth interpolations
-  const centerWidth = 100 - imageProgress * 58;
-  const centerHeight = 100 - imageProgress * 30;
-  const sideWidth = imageProgress * 22;
-  const sideOpacity = imageProgress;
-  const sideTranslateLeft = -100 + imageProgress * 100;
-  const sideTranslateRight = 100 - imageProgress * 100;
-  const borderRadius = imageProgress * 24;
-  const gap = imageProgress * 16;
-  const sideTranslateY = -(imageProgress * 15);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contacto");
@@ -79,6 +71,26 @@ export function HeroSection() {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Text fades out first (0 to 0.2)
+  const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
+
+  // Image transforms start after text fades (0.2 to 1)
+  const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
+
+  // Desktop original behavior
+  const centerWidth = 100 - imageProgress * 58;
+  const centerHeight = 100 - imageProgress * 30;
+  const sideWidth = imageProgress * (isMobile ? 30 : 22);
+  const sideOpacity = imageProgress;
+  const sideTranslateLeft = -100 + imageProgress * 100;
+  const sideTranslateRight = 100 - imageProgress * 100;
+  const borderRadius = imageProgress * 24;
+  const gap = imageProgress * (isMobile ? 28 : 16);
+
+  // Stronger mobile separation
+  const sideTranslateY = isMobile ? imageProgress * 42 : -(imageProgress * 15);
+  const centerTranslateY = isMobile ? imageProgress * 30 : 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
@@ -98,7 +110,9 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
-                transform: `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
+                transform: isMobile
+                  ? `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}px)`
+                  : `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
             >
@@ -131,6 +145,7 @@ export function HeroSection() {
                 height: `${centerHeight}%`,
                 flex: "0 0 auto",
                 borderRadius: `${borderRadius}px`,
+                transform: `translateY(${centerTranslateY}px)`,
               }}
             >
               <Image
@@ -214,7 +229,9 @@ export function HeroSection() {
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
-                transform: `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
+                transform: isMobile
+                  ? `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}px)`
+                  : `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
               }}
             >
