@@ -71,10 +71,17 @@ export function HeroSection() {
     }
   };
 
-  const textOpacity = isMobile ? 1 : Math.max(0, 1 - scrollProgress / 0.2);
   const imageProgress = isMobile
     ? 1
     : Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
+
+  // En móvil solo desvanecemos el contenido del hero al hacer scroll
+  const mobileFadeProgress = Math.max(0, Math.min(1, scrollProgress / 0.22));
+  const mobileTextOpacity = 1 - mobileFadeProgress;
+
+  const textOpacity = isMobile
+    ? mobileTextOpacity
+    : Math.max(0, 1 - scrollProgress / 0.2);
 
   // Desktop
   const desktopCenterWidth = 42;
@@ -107,13 +114,8 @@ export function HeroSection() {
   const sideWidth = isMobile ? 0 : imageProgress * finalSideWidth;
   const sideOpacity = isMobile ? 0 : imageProgress;
 
-  const sideTranslateLeft = isMobile
-    ? 0
-    : -100 + imageProgress * 100;
-
-  const sideTranslateRight = isMobile
-    ? 0
-    : 100 - imageProgress * 100;
+  const sideTranslateLeft = isMobile ? 0 : -100 + imageProgress * 100;
+  const sideTranslateRight = isMobile ? 0 : 100 - imageProgress * 100;
 
   const borderRadius = isMobile ? 0 : imageProgress * finalBorderRadius;
   const gap = isMobile ? 0 : imageProgress * finalGap;
@@ -253,16 +255,14 @@ export function HeroSection() {
 
               <div
                 className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/75"
-                style={{
-                  opacity: textOpacity,
-                }}
+                style={{ opacity: textOpacity }}
               >
                 <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
                   {isMobile ? "Desliza hacia abajo" : "Desplázate hacia abajo"}
                 </span>
-                <div className="mt-3 flex flex-col items-center animate-bounce">
-                  <div className="h-6 w-px bg-white/60" />
-                  <div className="mt-1 text-lg leading-none">⌄</div>
+
+                <div className="mt-3 animate-bounce text-xl leading-none md:text-2xl">
+                  ⌄
                 </div>
               </div>
             </div>
