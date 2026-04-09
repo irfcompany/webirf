@@ -46,9 +46,8 @@ export function ExperienceSection() {
     <section id="experiencia" ref={sectionRef} className="bg-secondary/30">
       <div className="px-6 py-12 md:px-12 md:py-14 lg:px-20 lg:py-16">
         <div className="max-w-5xl mx-auto">
-          
-          {/* 1. FIRST: Descriptive Text Block - in safe container with controlled max-width */}
-          <div 
+          {/* 1. FIRST: Descriptive Text Block */}
+          <div
             className={`max-w-4xl mx-auto mb-10 transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
@@ -63,17 +62,19 @@ export function ExperienceSection() {
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`relative p-5 md:p-6 lg:p-8 rounded-2xl bg-background border border-border text-center transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                className={`relative overflow-hidden rounded-2xl border border-white/30 bg-white/35 p-5 text-center shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-700 md:p-6 lg:p-8 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
                 style={{ transitionDelay: `${200 + index * 100}ms` }}
               >
-                <p className="text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground mb-2 md:mb-3">
+                {/* brillo sutil superior */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/60" />
+                <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20" />
+
+                <p className="mb-2 text-[10px] uppercase tracking-widest text-muted-foreground md:mb-3 md:text-xs">
                   {stat.label}
                 </p>
-                <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-primary leading-tight">
+                <p className="text-xl font-semibold leading-tight text-primary md:text-2xl lg:text-3xl">
                   {stat.value}
                 </p>
               </div>
