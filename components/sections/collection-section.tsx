@@ -131,9 +131,9 @@ export function CollectionSection() {
                   data-sector-card
                   className="group w-[75vw] flex-shrink-0 snap-center transition-all duration-300"
                   style={{
-                    opacity: isActive ? 1 : 0.55,
-                    transform: isActive ? "scale(1)" : "scale(0.96)",
-                    filter: isActive ? "blur(0px)" : "blur(2.5px)",
+                    opacity: isActive ? 1 : 0.42,
+                    transform: isActive ? "scale(1)" : "scale(0.95)",
+                    filter: isActive ? "blur(0px)" : "blur(5px)",
                   }}
                 >
                   <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-secondary">
@@ -148,7 +148,7 @@ export function CollectionSection() {
                       style={{
                         background: isActive
                           ? "linear-gradient(to top, rgb(15 23 42 / 0.70), transparent)"
-                          : "linear-gradient(to top, rgb(15 23 42 / 0.82), rgb(15 23 42 / 0.18))",
+                          : "linear-gradient(to top, rgb(15 23 42 / 0.85), rgb(15 23 42 / 0.22))",
                       }}
                     />
                     <div className="absolute bottom-6 left-6 right-6">
