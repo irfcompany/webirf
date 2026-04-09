@@ -54,7 +54,7 @@ export function CollectionSection() {
     if (!card) return;
 
     const cardWidth = card.offsetWidth;
-    const gap = 24; // gap-6 = 24px
+    const gap = 16;
     const step = cardWidth + gap;
 
     const index = Math.round(container.scrollLeft / step);
@@ -86,7 +86,7 @@ export function CollectionSection() {
     if (!card) return;
 
     const cardWidth = card.offsetWidth;
-    const gap = 24; // gap-6 = 24px
+    const gap = 16;
     const step = cardWidth + gap;
 
     const targetIndex = Math.max(0, Math.min(sectors.length - 1, index));
@@ -104,8 +104,7 @@ export function CollectionSection() {
 
   return (
     <section className="bg-background">
-      {/* Section Title - Safe container */}
-      <div className="px-6 py-10 md:px-12 lg:px-20 md:py-12">
+      <div className="px-6 py-10 md:px-12 md:py-12 lg:px-20">
         <div className="max-w-4xl">
           <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Sectores</p>
           <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
@@ -114,19 +113,18 @@ export function CollectionSection() {
         </div>
       </div>
 
-      {/* Sectors Grid */}
       <div className="pb-12 md:pb-14">
         {/* Mobile: Horizontal Carousel */}
-        <div className="relative md:hidden">
+        <div className="relative overflow-hidden md:hidden">
           <div
             ref={mobileCarouselRef}
-            className="flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+            className="flex gap-4 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
           >
             {sectors.map((sector) => (
               <div
                 key={sector.id}
                 data-sector-card
-                className="group w-[75vw] flex-shrink-0 snap-center"
+                className="group w-[calc(100vw-48px)] flex-shrink-0 snap-start"
               >
                 <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-secondary">
                   <FadeImage
@@ -146,7 +144,6 @@ export function CollectionSection() {
             ))}
           </div>
 
-          {/* Mobile arrows */}
           {canGoLeft && (
             <button
               type="button"
@@ -193,7 +190,6 @@ export function CollectionSection() {
         </div>
       </div>
 
-      {/* CTA Section - Safe container */}
       <div className="bg-secondary/50 px-6 py-12 md:px-12 md:py-14 lg:px-20">
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-6 text-2xl font-medium text-foreground md:text-3xl lg:text-4xl">
