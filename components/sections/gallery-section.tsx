@@ -33,6 +33,7 @@ export function GallerySection() {
 
     const timer = setTimeout(calculateHeight, 100);
     window.addEventListener("resize", calculateHeight);
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener("resize", calculateHeight);
@@ -79,20 +80,31 @@ export function GallerySection() {
       className="relative overflow-x-clip bg-background"
       style={{ height: sectionHeight }}
     >
-      {/* Section Header - OUTSIDE sticky, fixed position at top, no overlap */}
-      <div className="relative z-20 bg-background px-6 pt-12 pb-4 md:px-12 lg:px-20">
+      {/* Section Header */}
+      <div className="relative z-20 bg-background px-6 pb-4 pt-12 md:px-12 lg:px-20">
         <div className="max-w-xl">
-          <p className="mb-2 text-xs uppercase tracking-widest text-muted-foreground">Galería</p>
+          <p className="mb-2 text-xs uppercase tracking-widest text-muted-foreground">
+            Galería
+          </p>
           <h3 className="text-2xl font-medium text-foreground md:text-3xl">
             Una muestra de nuestro trabajo
           </h3>
         </div>
       </div>
 
-      {/* Sticky container - starts after header */}
+      {/* Sticky container */}
       <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="relative flex h-full items-center">
-          {/* Horizontal scrolling container */}
+        {/* Indicador fijo y visible */}
+        <div className="pointer-events-none absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+          <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
+            Desplázate hacia abajo
+          </span>
+          <div className="mt-3 animate-bounce text-xl leading-none md:text-2xl">
+            ⌄
+          </div>
+        </div>
+
+        <div className="flex h-full items-center">
           <div
             ref={containerRef}
             className="flex gap-6 px-6"
@@ -128,16 +140,6 @@ export function GallerySection() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Scroll indicator - always visible */}
-          <div className="pointer-events-none absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center text-white/80">
-            <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
-              Desplázate hacia abajo
-            </span>
-            <div className="mt-3 animate-bounce text-xl leading-none md:text-2xl">
-              ⌄
-            </div>
           </div>
         </div>
       </div>
