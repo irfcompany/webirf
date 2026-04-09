@@ -144,6 +144,8 @@ export function TechnologySection() {
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
 
+  const scrollIndicatorOpacity = Math.max(0, 1 - scrollProgress / 0.18);
+
   return (
     <section id="proyectos" ref={sectionRef} className="relative overflow-x-clip bg-primary">
       {/* Sticky container for scroll animation */}
@@ -236,6 +238,20 @@ export function TechnologySection() {
                     );
                   })}
                 </h2>
+              </div>
+
+              {/* Scroll indicator */}
+              <div
+                className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/75"
+                style={{ opacity: scrollIndicatorOpacity }}
+              >
+                <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
+                  {isMobile ? "Desliza hacia abajo" : "Desplázate hacia abajo"}
+                </span>
+
+                <div className="mt-3 animate-bounce text-xl leading-none md:text-2xl">
+                  ⌄
+                </div>
               </div>
             </div>
 
