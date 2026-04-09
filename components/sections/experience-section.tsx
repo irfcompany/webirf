@@ -59,9 +59,9 @@ export function ExperienceSection() {
         <div className="mx-auto max-w-5xl">
           {/* Texto superior */}
           <div
-            className={`mx-auto mb-16 max-w-4xl transition-all duration-700 md:mb-20 ${
+            className={`mx-auto max-w-4xl transition-all duration-700 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
+            } mb-20 md:mb-24 lg:mb-28`}
           >
             <p className="text-center text-lg leading-relaxed text-white/78 md:text-xl lg:text-2xl">
               IRF integra experiencia técnica, capacidad operativa y personal capacitado para desarrollar soluciones en ductería, aislamiento, recubrimientos, HVAC, refrigeración, fabricación, montaje, mecanizado plasma CNC, oxicorte y mantenimiento industrial. Atendemos proyectos industriales, comerciales y especiales con enfoque en calidad, cumplimiento y correcta ejecución.
@@ -78,9 +78,8 @@ export function ExperienceSection() {
                 }`}
                 style={{
                   transitionDelay: `${200 + index * 100}ms`,
-                  background: `
-                    linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 100%)
-                  `,
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 100%)",
                   borderColor: "rgba(255,255,255,0.16)",
                   backdropFilter: "blur(18px) saturate(150%)",
                   WebkitBackdropFilter: "blur(18px) saturate(150%)",
@@ -91,7 +90,6 @@ export function ExperienceSection() {
                   `,
                 }}
               >
-                {/* brillo superior suave */}
                 <div
                   className="pointer-events-none absolute inset-x-0 top-0 h-20"
                   style={{
@@ -100,7 +98,6 @@ export function ExperienceSection() {
                   }}
                 />
 
-                {/* halo superior izquierdo */}
                 <div
                   className="pointer-events-none absolute -left-8 -top-8 h-24 w-24 rounded-full"
                   style={{
@@ -109,14 +106,13 @@ export function ExperienceSection() {
                   }}
                 />
 
-                {/* borde interno */}
                 <div className="pointer-events-none absolute inset-[1px] rounded-[29px] border border-white/8" />
 
                 <p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-white/58 md:text-xs">
                   {stat.label}
                 </p>
 
-                <p className="whitespace-pre-line text-2xl font-semibold leading-tight text-white md:text-3xl lg:text-[2.1rem]">
+                <p className="whitespace-pre-line text-lg font-semibold leading-tight text-white md:text-xl lg:text-[1.75rem]">
                   {stat.value}
                 </p>
               </div>
