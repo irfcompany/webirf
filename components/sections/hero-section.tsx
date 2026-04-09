@@ -71,7 +71,6 @@ export function HeroSection() {
     }
   };
 
-  // En móvil quitamos por completo la transición del hero
   const textOpacity = isMobile ? 1 : Math.max(0, 1 - scrollProgress / 0.2);
   const imageProgress = isMobile
     ? 1
@@ -134,7 +133,6 @@ export function HeroSection() {
               paddingBottom: isMobile ? "0px" : `${60 + imageProgress * 40}px`,
             }}
           >
-            {/* Left Column - Desktop only */}
             {!isMobile && (
               <div
                 className="flex flex-col will-change-transform"
@@ -167,7 +165,6 @@ export function HeroSection() {
               </div>
             )}
 
-            {/* Main Hero Image - Center */}
             <div
               className="relative overflow-hidden will-change-transform"
               style={{
@@ -187,10 +184,12 @@ export function HeroSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent" />
 
-              {/* Overlay Text */}
               <div
-                className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-16 md:pb-20"
-                style={{ opacity: textOpacity }}
+                className="absolute inset-0 flex flex-col items-center justify-end px-6 md:pb-20"
+                style={{
+                  opacity: textOpacity,
+                  paddingBottom: isMobile ? "120px" : "96px",
+                }}
               >
                 <p
                   className="mb-4 animate-[slideUp_0.8s_ease-out_forwards] text-xs uppercase tracking-widest text-white/70 opacity-0"
@@ -251,9 +250,23 @@ export function HeroSection() {
                   </a>
                 </div>
               </div>
+
+              <div
+                className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/75"
+                style={{
+                  opacity: textOpacity,
+                }}
+              >
+                <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
+                  {isMobile ? "Desliza hacia abajo" : "Desplázate hacia abajo"}
+                </span>
+                <div className="mt-3 flex flex-col items-center animate-bounce">
+                  <div className="h-6 w-px bg-white/60" />
+                  <div className="mt-1 text-lg leading-none">⌄</div>
+                </div>
+              </div>
             </div>
 
-            {/* Right Column - Desktop only */}
             {!isMobile && (
               <div
                 className="flex flex-col will-change-transform"
