@@ -95,11 +95,11 @@ export function GallerySection() {
       {/* Sticky container */}
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Indicador fijo y visible */}
-        <div className="pointer-events-none absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
-          <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
+       <div className="pointer-events-none absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center text-[#0f172a] drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)]">
+          <span className="text-[9px] uppercase tracking-[0.22em] md:text-[10px]">
             Desplázate hacia abajo
           </span>
-          <div className="mt-3 animate-bounce text-xl leading-none md:text-2xl">
+          <div className="mt-2 animate-bounce text-base leading-none md:text-lg">
             ⌄
           </div>
         </div>
