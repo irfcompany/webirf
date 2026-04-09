@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
@@ -57,6 +58,58 @@ export function ExperienceSection() {
     >
       <div className="px-6 py-12 md:px-12 md:py-14 lg:px-20 lg:py-16">
         <div className="mx-auto max-w-5xl">
+          {/* Bloque superior nuevo: Chillers */}
+          <div
+            className={`mb-16 md:mb-20 transition-all duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
+            <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+              <div>
+                <p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-white/60 md:text-xs">
+                  Climatización y enfriamiento
+                </p>
+
+                <h2 className="mb-5 text-2xl font-medium leading-tight text-white md:text-3xl lg:text-4xl">
+                  Suministro, instalación y renta de chillers y equipos centrales
+                </h2>
+
+                <p className="mb-5 text-base leading-relaxed text-white/78 md:text-lg">
+                  IRF ofrece suministro, instalación y renta de chillers, así como soluciones en
+                  equipos centrales tipo paquete, divididos, BRB, VR y VRF, con enfoque en
+                  capacidad técnica, correcta integración y respuesta confiable en campo.
+                </p>
+
+                <div className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-md">
+                  Proveedor autorizado
+                </div>
+              </div>
+
+              <div
+                className="relative overflow-hidden rounded-[30px] border border-white/15"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)",
+                  backdropFilter: "blur(18px) saturate(150%)",
+                  WebkitBackdropFilter: "blur(18px) saturate(150%)",
+                  boxShadow:
+                    "0 10px 30px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04)",
+                }}
+              >
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src="/images/chillers.jpeg"
+                    alt="Chillers y equipos centrales de climatización industrial"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+                </div>
+                <div className="pointer-events-none absolute inset-[1px] rounded-[29px] border border-white/8" />
+              </div>
+            </div>
+          </div>
+
           {/* Texto superior */}
           <div
             className={`mx-auto max-w-4xl transition-all duration-700 ${
