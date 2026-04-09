@@ -71,8 +71,11 @@ export function HeroSection() {
     }
   };
 
-  const textOpacity = Math.max(0, 1 - scrollProgress / 0.2);
-  const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
+  // En móvil quitamos por completo la transición del hero
+  const textOpacity = isMobile ? 1 : Math.max(0, 1 - scrollProgress / 0.2);
+  const imageProgress = isMobile
+    ? 1
+    : Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
   // Desktop
   const desktopCenterWidth = 42;
@@ -94,8 +97,14 @@ export function HeroSection() {
   const finalGap = isMobile ? mobileGap : desktopGap;
   const finalBorderRadius = isMobile ? mobileBorderRadius : desktopBorderRadius;
 
-  const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
-  const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
+  const centerWidth = isMobile
+    ? 100
+    : 100 - imageProgress * (100 - finalCenterWidth);
+
+  const centerHeight = isMobile
+    ? 100
+    : 100 - imageProgress * (100 - finalCenterHeight);
+
   const sideWidth = isMobile ? 0 : imageProgress * finalSideWidth;
   const sideOpacity = isMobile ? 0 : imageProgress;
 
@@ -107,15 +116,15 @@ export function HeroSection() {
     ? 0
     : 100 - imageProgress * 100;
 
-  const borderRadius = imageProgress * finalBorderRadius;
-  const gap = imageProgress * finalGap;
+  const borderRadius = isMobile ? 0 : imageProgress * finalBorderRadius;
+  const gap = isMobile ? 0 : imageProgress * finalGap;
 
   const sideTranslateY = isMobile ? 0 : -(imageProgress * 15);
   const centerTranslateY = 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className={isMobile ? "relative h-screen overflow-hidden" : "sticky top-0 h-screen overflow-hidden"}>
         <div className="flex h-full w-full items-center justify-center">
           <div
             className="relative flex h-full w-full items-stretch justify-center"
@@ -280,7 +289,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="h-[200vh]" />
+      {!isMobile && <div className="h-[200vh]" />}
     </section>
   );
 }
