@@ -123,7 +123,6 @@ export function TechnologySection() {
 
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
 
-  // Ajustes: menos margen en móvil, gap menor y laterales un poco más anchas
   const finalCenterWidth = isMobile ? 42 : 42;
   const finalSideWidth = isMobile ? 26 : 22;
   const finalGap = isMobile ? 8 : 16;
@@ -144,14 +143,10 @@ export function TechnologySection() {
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
 
-  const scrollIndicatorOpacity = Math.max(0, 1 - scrollProgress / 0.18);
-
   return (
     <section id="proyectos" ref={sectionRef} className="relative overflow-x-clip bg-primary">
-      {/* Sticky container for scroll animation */}
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full w-full items-center justify-center">
-          {/* Bento Grid Container */}
           <div
             className="relative flex h-full w-full items-stretch justify-center"
             style={{
@@ -208,7 +203,7 @@ export function TechnologySection() {
               />
               <div className="absolute inset-0 bg-primary/40" />
 
-              {/* Title Text - Safe container, no overlap */}
+              {/* Title Text */}
               <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
                 <p className="mb-4 text-sm uppercase tracking-widest text-white/70">Proyectos</p>
                 <h2 className="max-w-2xl text-3xl font-medium leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
@@ -241,10 +236,7 @@ export function TechnologySection() {
               </div>
 
               {/* Scroll indicator */}
-              <div
-                className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/75"
-                style={{ opacity: scrollIndicatorOpacity }}
-              >
+              <div className="absolute bottom-14 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/75">
                 <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
                   {isMobile ? "Desliza hacia abajo" : "Desplázate hacia abajo"}
                 </span>
@@ -289,10 +281,8 @@ export function TechnologySection() {
         </div>
       </div>
 
-      {/* Scroll space to enable animation */}
       <div className="h-[200vh]" />
 
-      {/* Description Section - Safe container */}
       <div className="relative overflow-hidden bg-background px-6 py-12 md:px-12 md:py-14 lg:px-20 lg:py-16">
         <div className="relative z-10 text-center">
           <ScrollRevealText text={descriptionText} />
