@@ -82,11 +82,11 @@ export function HeroSection() {
   const desktopBorderRadius = 24;
 
   // Mobile
-  const mobileCenterWidth = 24;
-  const mobileCenterHeight = 30;
-  const mobileSideWidth = 33;
-  const mobileGap = 14;
-  const mobileBorderRadius = 22;
+  const mobileCenterWidth = 100;
+  const mobileCenterHeight = 100;
+  const mobileSideWidth = 0;
+  const mobileGap = 0;
+  const mobileBorderRadius = 0;
 
   const finalCenterWidth = isMobile ? mobileCenterWidth : desktopCenterWidth;
   const finalCenterHeight = isMobile ? mobileCenterHeight : desktopCenterHeight;
@@ -96,23 +96,22 @@ export function HeroSection() {
 
   const centerWidth = 100 - imageProgress * (100 - finalCenterWidth);
   const centerHeight = 100 - imageProgress * (100 - finalCenterHeight);
-  const sideWidth = imageProgress * finalSideWidth;
-  const sideOpacity = imageProgress;
+  const sideWidth = isMobile ? 0 : imageProgress * finalSideWidth;
+  const sideOpacity = isMobile ? 0 : imageProgress;
 
   const sideTranslateLeft = isMobile
-    ? -84 + imageProgress * 84
+    ? 0
     : -100 + imageProgress * 100;
 
   const sideTranslateRight = isMobile
-    ? 84 - imageProgress * 84
+    ? 0
     : 100 - imageProgress * 100;
 
   const borderRadius = imageProgress * finalBorderRadius;
   const gap = imageProgress * finalGap;
 
-  // Laterales bajan, pero el centro baja mucho más
-  const sideTranslateY = isMobile ? imageProgress * 150 : -(imageProgress * 15);
-  const centerTranslateY = isMobile ? imageProgress * 190 : 0;
+  const sideTranslateY = isMobile ? 0 : -(imageProgress * 15);
+  const centerTranslateY = 0;
 
   return (
     <section id="inicio" ref={sectionRef} className="relative overflow-x-clip bg-background">
@@ -122,51 +121,42 @@ export function HeroSection() {
             className="relative flex h-full w-full items-stretch justify-center"
             style={{
               gap: `${gap}px`,
-              padding: `${imageProgress * (isMobile ? 8 : 16)}px`,
-              paddingBottom: `${isMobile ? 0 : 60 + imageProgress * 40}px`,
+              padding: isMobile ? "0px" : `${imageProgress * 16}px`,
+              paddingBottom: isMobile ? "0px" : `${60 + imageProgress * 40}px`,
             }}
           >
-            {/* Left Column */}
-            <div
-              className="flex flex-col will-change-transform"
-              style={{
-                width: `${sideWidth}%`,
-                gap: `${gap}px`,
-                transform: isMobile
-                  ? `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}px)`
-                  : `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
-                opacity: sideOpacity,
-              }}
-            >
-              {sideImages
-                .filter((img) => img.position === "left")
-                .map((img, idx) => (
-                  <div
-                    key={idx}
-                    className="relative overflow-hidden will-change-transform"
-                    style={{
-                      flex: isMobile ? "0 0 auto" : img.span,
-                      aspectRatio: isMobile ? "3 / 3.35" : undefined,
-                      minHeight: isMobile ? "230px" : undefined,
-                      borderRadius: `${borderRadius}px`,
-                    }}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover"
-                      style={
-                        isMobile
-                          ? {
-                              objectPosition: idx === 0 ? "62% center" : "center center",
-                            }
-                          : undefined
-                      }
-                    />
-                  </div>
-                ))}
-            </div>
+            {/* Left Column - Desktop only */}
+            {!isMobile && (
+              <div
+                className="flex flex-col will-change-transform"
+                style={{
+                  width: `${sideWidth}%`,
+                  gap: `${gap}px`,
+                  transform: `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
+                  opacity: sideOpacity,
+                }}
+              >
+                {sideImages
+                  .filter((img) => img.position === "left")
+                  .map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="relative overflow-hidden will-change-transform"
+                      style={{
+                        flex: img.span,
+                        borderRadius: `${borderRadius}px`,
+                      }}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+              </div>
+            )}
 
             {/* Main Hero Image - Center */}
             <div
@@ -254,47 +244,38 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* Right Column */}
-            <div
-              className="flex flex-col will-change-transform"
-              style={{
-                width: `${sideWidth}%`,
-                gap: `${gap}px`,
-                transform: isMobile
-                  ? `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}px)`
-                  : `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
-                opacity: sideOpacity,
-              }}
-            >
-              {sideImages
-                .filter((img) => img.position === "right")
-                .map((img, idx) => (
-                  <div
-                    key={idx}
-                    className="relative overflow-hidden will-change-transform"
-                    style={{
-                      flex: isMobile ? "0 0 auto" : img.span,
-                      aspectRatio: isMobile ? "3 / 3.35" : undefined,
-                      minHeight: isMobile ? "230px" : undefined,
-                      borderRadius: `${borderRadius}px`,
-                    }}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover"
-                      style={
-                        isMobile
-                          ? {
-                              objectPosition: idx === 0 ? "38% center" : "center center",
-                            }
-                          : undefined
-                      }
-                    />
-                  </div>
-                ))}
-            </div>
+            {/* Right Column - Desktop only */}
+            {!isMobile && (
+              <div
+                className="flex flex-col will-change-transform"
+                style={{
+                  width: `${sideWidth}%`,
+                  gap: `${gap}px`,
+                  transform: `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
+                  opacity: sideOpacity,
+                }}
+              >
+                {sideImages
+                  .filter((img) => img.position === "right")
+                  .map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="relative overflow-hidden will-change-transform"
+                      style={{
+                        flex: img.span,
+                        borderRadius: `${borderRadius}px`,
+                      }}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
