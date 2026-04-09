@@ -43,7 +43,7 @@ export function FooterSection() {
 
     try {
       const payload = {
-        access_key: "YOUR_WEB3FORMS_ACCESS_KEY",
+        access_key: "7c5a0e29-b11c-476d-b63f-fdc6da5f4f0a",
         subject: "Nueva solicitud de cotización desde IRF",
         from_name: "Sitio web IRF",
         nombre: formData.nombre,
@@ -335,6 +335,7 @@ export function FooterSection() {
                   className="text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground"
                 >
                   +52 81 2889 8672
+                  +52 676 112 3869
                 </a>
               </li>
               <li>
