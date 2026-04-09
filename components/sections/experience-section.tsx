@@ -98,7 +98,7 @@ export function ExperienceSection() {
               >
                 <div className="relative aspect-[4/3] w-full">
                   <Image
-                    src="/images/chillers.jpeg"
+                    src="/images/chillers.jpg"
                     alt="Chillers y equipos centrales de climatización industrial"
                     fill
                     className="object-cover"
