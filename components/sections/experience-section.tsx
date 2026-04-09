@@ -51,14 +51,15 @@ export function ExperienceSection() {
         background: `
           radial-gradient(circle at top left, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 28%),
           radial-gradient(circle at bottom right, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 24%),
-          linear-gradient(180deg, #0b0f19 0%, #111827 48%, #0f172a 100%)
+          linear-gradient(180deg, #070b14 0%, #0b1020 46%, #0a1228 100%)
         `,
       }}
     >
       <div className="px-6 py-12 md:px-12 md:py-14 lg:px-20 lg:py-16">
         <div className="mx-auto max-w-5xl">
+          {/* Texto superior */}
           <div
-            className={`mx-auto mb-10 max-w-4xl transition-all duration-700 ${
+            className={`mx-auto mb-16 max-w-4xl transition-all duration-700 md:mb-20 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
@@ -67,47 +68,55 @@ export function ExperienceSection() {
             </p>
           </div>
 
+          {/* Tarjetas */}
           <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`relative overflow-hidden rounded-[28px] border p-5 text-center transition-all duration-700 md:p-6 lg:p-8 ${
+                className={`relative overflow-hidden rounded-[30px] border p-5 text-center transition-all duration-700 md:p-6 lg:p-7 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
                 style={{
                   transitionDelay: `${200 + index * 100}ms`,
-                  background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)",
-                  borderColor: "rgba(255,255,255,0.18)",
-                  backdropFilter: "blur(24px) saturate(160%)",
-                  WebkitBackdropFilter: "blur(24px) saturate(160%)",
-                  boxShadow:
-                    "0 10px 30px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.05)",
+                  background: `
+                    linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 100%)
+                  `,
+                  borderColor: "rgba(255,255,255,0.16)",
+                  backdropFilter: "blur(18px) saturate(150%)",
+                  WebkitBackdropFilter: "blur(18px) saturate(150%)",
+                  boxShadow: `
+                    0 10px 30px rgba(0,0,0,0.22),
+                    inset 0 1px 0 rgba(255,255,255,0.22),
+                    inset 0 -1px 0 rgba(255,255,255,0.04)
+                  `,
                 }}
               >
+                {/* brillo superior suave */}
                 <div
-                  className="pointer-events-none absolute -left-10 -top-10 h-28 w-28 rounded-full"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-20"
                   style={{
                     background:
-                      "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%)",
+                      "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 100%)",
                   }}
                 />
 
+                {/* halo superior izquierdo */}
                 <div
-                  className="pointer-events-none absolute inset-y-0 right-0 w-1/3"
+                  className="pointer-events-none absolute -left-8 -top-8 h-24 w-24 rounded-full"
                   style={{
                     background:
-                      "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 100%)",
+                      "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 72%)",
                   }}
                 />
 
-                <div className="pointer-events-none absolute inset-[1px] rounded-[27px] border border-white/8" />
+                {/* borde interno */}
+                <div className="pointer-events-none absolute inset-[1px] rounded-[29px] border border-white/8" />
 
-                <p className="mb-2 text-[10px] uppercase tracking-widest text-white/60 md:mb-3 md:text-xs">
+                <p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-white/58 md:text-xs">
                   {stat.label}
                 </p>
 
-                <p className="whitespace-pre-line text-xl font-semibold leading-tight text-white md:text-2xl lg:text-3xl">
+                <p className="whitespace-pre-line text-2xl font-semibold leading-tight text-white md:text-3xl lg:text-[2.1rem]">
                   {stat.value}
                 </p>
               </div>
