@@ -112,7 +112,7 @@ export function ExperienceSection() {
                   {stat.label}
                 </p>
 
-                <p className="whitespace-pre-line text-lg font-semibold leading-tight text-white md:text-xl lg:text-[1.75rem]">
+                <p className="whitespace-pre-line text-[14px] font-semibold leading-snug text-white md:text-[15px] lg:text-[1.05rem]">
                   {stat.value}
                 </p>
               </div>
