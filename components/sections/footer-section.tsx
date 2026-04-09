@@ -46,6 +46,7 @@ export function FooterSection() {
         access_key: "7c5a0e29-b11c-476d-b63f-fdc6da5f4f0a",
         subject: "Nueva solicitud de cotización desde IRF",
         from_name: "Sitio web IRF",
+        replyto: formData.email,
         nombre: formData.nombre,
         empresa: formData.empresa || "No proporcionada",
         email: formData.email,
