@@ -46,7 +46,14 @@ export function ExperienceSection() {
     <section
       id="experiencia"
       ref={sectionRef}
-      className="bg-[#eef1f5]"
+      className="relative overflow-hidden"
+      style={{
+        background: `
+          radial-gradient(circle at top left, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 32%),
+          radial-gradient(circle at bottom right, rgba(203,213,225,0.35) 0%, rgba(203,213,225,0) 30%),
+          linear-gradient(180deg, #f4f5f7 0%, #eceff3 48%, #e7ebf0 100%)
+        `,
+      }}
     >
       <div className="px-6 py-12 md:px-12 md:py-14 lg:px-20 lg:py-16">
         <div className="mx-auto max-w-5xl">
@@ -70,23 +77,21 @@ export function ExperienceSection() {
                 style={{
                   transitionDelay: `${200 + index * 100}ms`,
                   background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.28) 100%)",
-                  backdropFilter: "blur(22px) saturate(160%)",
-                  WebkitBackdropFilter: "blur(22px) saturate(160%)",
+                    "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.24) 100%)",
+                  backdropFilter: "blur(28px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(28px) saturate(180%)",
                   boxShadow:
-                    "0 10px 30px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(255,255,255,0.18)",
+                    "0 10px 30px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.18)",
                 }}
               >
-                {/* brillo superior izquierdo */}
                 <div
                   className="pointer-events-none absolute -left-10 -top-10 h-28 w-28 rounded-full"
                   style={{
                     background:
-                      "radial-gradient(circle, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 70%)",
+                      "radial-gradient(circle, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0) 70%)",
                   }}
                 />
 
-                {/* brillo vertical suave */}
                 <div
                   className="pointer-events-none absolute inset-y-0 right-0 w-1/3"
                   style={{
@@ -95,14 +100,13 @@ export function ExperienceSection() {
                   }}
                 />
 
-                {/* borde interno sutil */}
                 <div className="pointer-events-none absolute inset-[1px] rounded-[27px] border border-white/25" />
 
                 <p className="mb-2 text-[10px] uppercase tracking-widest text-muted-foreground md:mb-3 md:text-xs">
                   {stat.label}
                 </p>
 
-                <p className="text-xl font-semibold leading-tight text-primary md:text-2xl lg:text-3xl whitespace-pre-line">
+                <p className="whitespace-pre-line text-xl font-semibold leading-tight text-primary md:text-2xl lg:text-3xl">
                   {stat.value}
                 </p>
               </div>
