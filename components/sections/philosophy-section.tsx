@@ -93,8 +93,8 @@ export function PhilosophySection() {
                 style={{
                   transform: `translate3d(${alpineTranslateX}%, 0, 0)`,
                   WebkitTransform: `translate3d(${alpineTranslateX}%, 0, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <Image
@@ -116,8 +116,8 @@ export function PhilosophySection() {
                 style={{
                   transform: `translate3d(${forestTranslateX}%, 0, 0)`,
                   WebkitTransform: `translate3d(${forestTranslateX}%, 0, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <Image
@@ -145,7 +145,7 @@ export function PhilosophySection() {
           </p>
 
           {/* Paragraph 1 */}
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-center mb-8">
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-justify mb-8">
             IRF es una empresa orientada a soluciones integrales para el sector industrial, comercial y de servicios técnicos especializados. Nuestra experiencia en campo, capacidad operativa y compromiso con la ejecución nos permiten atender proyectos de ductería, aislamiento, HVAC, refrigeración, fabricación, montaje, recubrimientos, mecanizado plasma CNC, oxicorte y mantenimiento industrial con un enfoque serio, técnico y profesional.
           </p>
 
@@ -172,7 +172,6 @@ export function PhilosophySection() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }
