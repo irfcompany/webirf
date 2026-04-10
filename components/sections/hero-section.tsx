@@ -187,20 +187,20 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent" />
 
               <div
-                className="absolute inset-0 flex flex-col items-center justify-end px-6 md:pb-20"
+                className="absolute inset-0 flex flex-col items-center justify-end px-6"
                 style={{
                   opacity: textOpacity,
-                  paddingBottom: isMobile ? "120px" : "96px",
+                  paddingBottom: isMobile ? "120px" : "92px",
                 }}
               >
                 <p
-                  className="mb-4 animate-[slideUp_0.8s_ease-out_forwards] text-xs uppercase tracking-widest text-white/70 opacity-0"
+                  className="mb-5 animate-[slideUp_0.8s_ease-out_forwards] text-xs uppercase tracking-widest text-white/70 opacity-0 md:mb-7 md:text-[11px] md:tracking-[0.22em] lg:text-xs"
                   style={{ animationDelay: "0.1s" }}
                 >
-                  Infraestructura, ingeniería y ejecución
+                  Infraestructura, ingeniería y ejecución industrial en Monterrey y a nivel nacional
                 </p>
 
-                <h1 className="text-[28vw] font-bold leading-[0.8] tracking-tighter text-white md:text-[22vw]">
+                <h1 className="text-[28vw] font-bold leading-[0.8] tracking-tighter text-white md:text-[20vw] lg:text-[18vw]">
                   {word.split("").map((letter, index) => (
                     <span
                       key={index}
@@ -217,25 +217,26 @@ export function HeroSection() {
                 </h1>
 
                 <h2
-                  className="mt-4 max-w-2xl animate-[slideUp_0.8s_ease-out_forwards] text-center text-2xl font-medium text-white opacity-0 md:text-3xl lg:text-4xl"
+                  className="mt-5 max-w-2xl animate-[slideUp_0.8s_ease-out_forwards] text-center text-2xl font-medium text-white opacity-0 md:mt-7 md:max-w-3xl md:text-[2rem] lg:mt-8 lg:text-[2.45rem]"
                   style={{ animationDelay: "0.35s" }}
                 >
                   Soluciones integrales para la industria
                 </h2>
 
                 <div
-                  className="mt-6 w-full max-w-3xl animate-[slideUp_0.8s_ease-out_forwards] px-4 opacity-0"
+                  className="mt-6 w-full max-w-3xl animate-[slideUp_0.8s_ease-out_forwards] px-4 opacity-0 md:mt-8 md:max-w-4xl lg:max-w-[980px]"
                   style={{ animationDelay: "0.5s" }}
                 >
-                  <p className="text-center text-sm leading-relaxed text-white/80 md:text-base lg:text-lg">
+                  <p className="text-center text-sm leading-relaxed text-white/80 md:text-[15px] md:leading-[1.75] lg:text-[17px] lg:leading-[1.85]">
                     Ductería HVAC e industrial, aislamiento térmico, recubrimientos, refrigeración,
-                    fabricación, montaje, mecanizado CNC, oxicorte, plasma y mantenimiento industrial
-                    con enfoque en calidad, capacidad técnica y correcta ejecución.
+                    fabricación, montaje, mecanizado CNC, oxicorte, plasma, pailería, estructuras
+                    metálicas, inyección y extracción, mantenimiento industrial, laminaciones KR18,
+                    Galvalok, R101 y NR135, y proyectos especiales.
                   </p>
                 </div>
 
                 <div
-                  className="mt-8 flex flex-col gap-4 animate-[slideUp_0.8s_ease-out_forwards] opacity-0 sm:flex-row"
+                  className="mt-8 flex flex-col gap-4 animate-[slideUp_0.8s_ease-out_forwards] opacity-0 sm:flex-row md:mt-10"
                   style={{ animationDelay: "0.65s" }}
                 >
                   <button
