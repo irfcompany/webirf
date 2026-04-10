@@ -1,7 +1,15 @@
 "use client";
 
 import { FadeImage } from "@/components/fade-image";
-import { Factory, Building2, HardHat, Wrench, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Factory,
+  Building2,
+  HardHat,
+  Wrench,
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const sectors = [
@@ -21,8 +29,8 @@ const sectors = [
   },
   {
     id: 3,
-    name: "Construcción",
-    description: "Obra nueva y remodelaciones mayores",
+    name: "Infraestructura",
+    description: "Obra industrial, ampliaciones y adecuaciones técnicas",
     icon: HardHat,
     image: "/images/sectores3.png",
   },
@@ -35,8 +43,8 @@ const sectors = [
   },
   {
     id: 5,
-    name: "Proyectos especiales",
-    description: "Soluciones a medida para necesidades únicas",
+    name: "Soluciones especiales",
+    description: "Integraciones a medida para requerimientos específicos",
     icon: Sparkles,
     image: "/images/sectores5.jpeg",
   },
@@ -54,7 +62,7 @@ export function CollectionSection() {
     if (!card) return;
 
     const cardWidth = card.offsetWidth;
-    const gap = 24; // gap-6 = 24px
+    const gap = 24;
     const step = cardWidth + gap;
 
     const index = Math.round(container.scrollLeft / step);
@@ -86,7 +94,7 @@ export function CollectionSection() {
     if (!card) return;
 
     const cardWidth = card.offsetWidth;
-    const gap = 24; // gap-6 = 24px
+    const gap = 24;
     const step = cardWidth + gap;
 
     const targetIndex = Math.max(0, Math.min(sectors.length - 1, index));
@@ -104,10 +112,12 @@ export function CollectionSection() {
 
   return (
     <section className="bg-background">
-      {/* Section Title - Safe container */}
-      <div className="px-6 py-10 md:px-12 lg:px-20 md:py-12">
+      {/* Section Title */}
+      <div className="px-6 py-10 md:px-12 md:py-12 lg:px-20">
         <div className="max-w-4xl">
-          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Sectores</p>
+          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">
+            Sectores
+          </p>
           <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
             Experiencia en múltiples industrias
           </h2>
@@ -120,7 +130,7 @@ export function CollectionSection() {
         <div className="relative md:hidden">
           <div
             ref={mobileCarouselRef}
-            className="flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+            className="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 scroll-smooth"
           >
             {sectors.map((sector, index) => {
               const isActive = index === currentIndex;
@@ -153,8 +163,12 @@ export function CollectionSection() {
                     />
                     <div className="absolute bottom-6 left-6 right-6">
                       <sector.icon className="mb-3 h-8 w-8 text-white" />
-                      <h3 className="mb-1 text-xl font-semibold text-white">{sector.name}</h3>
-                      <p className="text-sm text-white/80">{sector.description}</p>
+                      <h3 className="mb-1 text-xl font-semibold text-white">
+                        {sector.name}
+                      </h3>
+                      <p className="text-sm text-white/80">
+                        {sector.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -162,7 +176,6 @@ export function CollectionSection() {
             })}
           </div>
 
-          {/* Mobile arrows */}
           {canGoLeft && (
             <button
               type="button"
@@ -200,8 +213,12 @@ export function CollectionSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <sector.icon className="mb-3 h-8 w-8 text-white" />
-                  <h3 className="mb-1 text-lg font-semibold text-white">{sector.name}</h3>
-                  <p className="text-sm text-white/80">{sector.description}</p>
+                  <h3 className="mb-1 text-lg font-semibold text-white">
+                    {sector.name}
+                  </h3>
+                  <p className="text-sm text-white/80">
+                    {sector.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -209,14 +226,15 @@ export function CollectionSection() {
         </div>
       </div>
 
-      {/* CTA Section - Safe container */}
+      {/* CTA Section */}
       <div className="bg-secondary/50 px-6 py-12 md:px-12 md:py-14 lg:px-20">
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-6 text-2xl font-medium text-foreground md:text-3xl lg:text-4xl">
             ¿Tienes un proyecto en mente?
           </h3>
           <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Contáctanos para recibir asesoría técnica sin compromiso. Atendemos proyectos industriales, comerciales y especiales en cualquier parte del país.
+            Contáctanos para recibir asesoría técnica y una propuesta acorde al alcance de tu proyecto.
+            Atendemos requerimientos industriales, comerciales y especiales en distintas regiones del país.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
