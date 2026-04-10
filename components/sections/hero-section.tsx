@@ -255,7 +255,7 @@ export function HeroSection() {
               </div>
 
               <div
-                className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/70 md:bottom-3"
+                className="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/70 md:bottom-1"
                 style={{ opacity: textOpacity }}
               >
                 <span className="text-[11px] uppercase tracking-[0.22em] md:text-[11px]">
