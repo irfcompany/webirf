@@ -74,10 +74,10 @@ export function ExperienceSection() {
                   Suministro, instalación y renta de chillers y equipos centrales
                 </h2>
 
-                <p className="mb-5 text-base leading-relaxed text-white/78 md:text-lg">
+                <p className="mb-5 text-justify text-base leading-relaxed text-white/78 md:text-lg">
                   IRF ofrece suministro, instalación y renta de chillers, así como soluciones en
-                  equipos centrales tipo paquete, divididos, BRB, VR y VRF, con enfoque en
-                  capacidad técnica, correcta integración y respuesta confiable en campo.
+                  equipos centrales tipo paquete, divididos, VRV y VRF, con enfoque en capacidad
+                  técnica, correcta integración y respuesta confiable en campo.
                 </p>
 
                 <div className="inline-flex rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-md">
@@ -117,8 +117,12 @@ export function ExperienceSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             } mb-20 md:mb-24 lg:mb-28`}
           >
-            <p className="text-center text-lg leading-relaxed text-white/78 md:text-xl lg:text-2xl">
-              IRF integra experiencia técnica, capacidad operativa y personal capacitado para desarrollar soluciones en ductería, aislamiento, recubrimientos, HVAC, refrigeración, fabricación, montaje, mecanizado plasma CNC, oxicorte y mantenimiento industrial. Atendemos proyectos industriales, comerciales y especiales con enfoque en calidad, cumplimiento y correcta ejecución.
+            <p className="text-justify text-lg leading-relaxed text-white/78 md:text-xl lg:text-2xl">
+              IRF integra experiencia técnica, capacidad operativa y personal capacitado para
+              desarrollar soluciones en ductería, aislamiento, recubrimientos, HVAC,
+              refrigeración, fabricación, montaje, mecanizado CNC, oxicorte, plasma y
+              mantenimiento industrial. Atendemos proyectos industriales, comerciales y
+              especiales con enfoque en calidad, cumplimiento y correcta ejecución.
             </p>
           </div>
 
