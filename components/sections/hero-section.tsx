@@ -194,7 +194,7 @@ export function HeroSection() {
                 }}
               >
                 <p
-                  className="mb-5 animate-[slideUp_0.8s_ease-out_forwards] text-xs uppercase tracking-widest text-white/70 opacity-0 md:mb-7 md:text-[11px] md:tracking-[0.22em] lg:text-xs"
+                  className="mb-5 text-center animate-[slideUp_0.8s_ease-out_forwards] text-xs uppercase tracking-widest text-white/70 opacity-0 md:mb-7 md:text-[11px] md:tracking-[0.22em] lg:text-xs"
                   style={{ animationDelay: "0.1s" }}
                 >
                   Infraestructura, ingeniería y ejecución industrial en Monterrey y a nivel nacional
