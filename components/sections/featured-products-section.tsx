@@ -51,7 +51,6 @@ export function FeaturedProductsSection() {
 
   return (
     <section id="servicios" className="bg-background">
-      {/* Section Title */}
       <div className="px-6 py-10 md:px-12 md:py-12 lg:px-20 lg:py-14">
         <div className="mx-auto max-w-4xl text-center">
           <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">
@@ -63,19 +62,16 @@ export function FeaturedProductsSection() {
         </div>
       </div>
 
-      {/* Services Grid */}
       <div className="grid grid-cols-1 gap-x-6 gap-y-10 px-6 pb-12 md:grid-cols-2 md:px-12 md:pb-14 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12 lg:px-20 lg:pb-16">
         {services.map((service, index) => {
           const isActive = activeCard === index;
 
           return (
             <div key={service.title} className="flex flex-col">
-              {/* Image Card with Hover/Tap Overlay */}
               <div
                 className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-xl"
                 onClick={() => handleCardTap(index)}
               >
-                {/* Image with subtle scale on hover */}
                 <FadeImage
                   src={service.image || "/placeholder.svg"}
                   alt={service.title}
@@ -85,19 +81,17 @@ export function FeaturedProductsSection() {
                   }`}
                 />
 
-                {/* Small interaction hint */}
-                <div className="absolute right-4 top-4 rounded-full bg-black/35 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
-                  Toca o pasa el cursor
+                {/* Indicador solo en móvil */}
+                <div className="absolute right-4 top-4 rounded-full bg-black/30 px-3 py-1 text-[10px] font-medium text-white/90 backdrop-blur-sm md:hidden">
+                  Toca para más información
                 </div>
 
-                {/* Gradient overlay - appears on hover/tap */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/10 transition-opacity duration-400 ease-out ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                   }`}
                 />
 
-                {/* Description text - slides up on hover/tap */}
                 <div
                   className={`absolute inset-0 flex items-end p-5 transition-all duration-400 ease-out md:p-6 ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
@@ -113,7 +107,6 @@ export function FeaturedProductsSection() {
                 </div>
               </div>
 
-              {/* Title Below Image - Always Visible */}
               <div className="pt-4">
                 <h3 className="text-base font-semibold leading-snug text-foreground md:text-[1.02rem]">
                   {service.title}
