@@ -190,7 +190,7 @@ export function HeroSection() {
                 className="absolute inset-0 flex flex-col items-center justify-end px-6"
                 style={{
                   opacity: textOpacity,
-                  paddingBottom: isMobile ? "120px" : "48px",
+                  paddingBottom: isMobile ? "120px" : "64px",
                 }}
               >
                 <p
@@ -255,14 +255,14 @@ export function HeroSection() {
               </div>
 
               <div
-                className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/75"
+                className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center text-white/70 md:bottom-3"
                 style={{ opacity: textOpacity }}
               >
-                <span className="text-[11px] uppercase tracking-[0.25em] md:text-xs">
+                <span className="text-[11px] uppercase tracking-[0.22em] md:text-[11px]">
                   {isMobile ? "Desliza hacia abajo" : "Desplázate hacia abajo"}
                 </span>
 
-                <div className="mt-3 animate-bounce text-xl leading-none md:text-2xl">
+                <div className="mt-2 animate-bounce text-lg leading-none md:text-xl">
                   ⌄
                 </div>
               </div>
