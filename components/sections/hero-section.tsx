@@ -190,7 +190,7 @@ export function HeroSection() {
                 className="absolute inset-0 flex flex-col items-center justify-end px-6"
                 style={{
                   opacity: textOpacity,
-                  paddingBottom: isMobile ? "120px" : "92px",
+                  paddingBottom: isMobile ? "120px" : "48px",
                 }}
               >
                 <p
