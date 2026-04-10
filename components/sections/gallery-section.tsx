@@ -13,12 +13,12 @@ export function GallerySection() {
   const images = [
     { src: "/images/galeria1.jpeg", alt: "Instalación de ductos HVAC" },
     { src: "/images/galeria2.jpeg", alt: "Sistema de ductería industrial" },
-    { src: "/images/galeria3.jpeg", alt: "Trabajos de soldadura" },
-    { src: "/images/galeria4.jpeg", alt: "Planta industrial" },
+    { src: "/images/galeria3.jpeg", alt: "Fabricación y soldadura de ductería" },
+    { src: "/images/galeria4.jpeg", alt: "Línea de proceso con ductería industrial" },
     { src: "/images/galeria5.jpeg", alt: "Estructuras metálicas" },
-    { src: "/images/galeria6.jpeg", alt: "Mantenimiento industrial" },
+    { src: "/images/galeria6.jpeg", alt: "Mantenimiento industrial en campo" },
     { src: "/images/galeria7.jpeg", alt: "Sistemas de refrigeración" },
-    { src: "/images/galeria8.jpeg", alt: "Instalaciones industriales" },
+    { src: "/images/galeria8.jpeg", alt: "Instalaciones industriales especiales" },
   ];
 
   useEffect(() => {
@@ -81,21 +81,27 @@ export function GallerySection() {
       style={{ height: sectionHeight }}
     >
       {/* Section Header */}
-      <div className="relative z-20 bg-background px-6 pb-4 pt-12 md:px-12 lg:px-20">
-        <div className="max-w-xl">
-          <p className="mb-2 text-xs uppercase tracking-widest text-muted-foreground">
+      <div className="relative z-20 bg-background px-6 pb-4 pt-8 md:px-12 md:pb-5 md:pt-10 lg:px-20 lg:pt-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">
             Galería
           </p>
-          <h3 className="text-2xl font-medium text-foreground md:text-3xl">
+
+          <h3 className="text-2xl font-medium text-foreground md:text-3xl lg:text-4xl">
             Una muestra de nuestro trabajo
           </h3>
+
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            Proyectos reales en ductería, HVAC, aislamiento, fabricación, montaje y
+            soluciones industriales ejecutadas con calidad y cumplimiento.
+          </p>
         </div>
       </div>
 
       {/* Sticky container */}
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Indicador fijo y visible */}
-       <div className="pointer-events-none absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center text-[#0f172a] drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)]">
+        <div className="pointer-events-none absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center text-[#0f172a] drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)]">
           <span className="text-[9px] uppercase tracking-[0.22em] md:text-[10px]">
             Desplázate hacia abajo
           </span>
@@ -107,7 +113,7 @@ export function GallerySection() {
         <div className="flex h-full items-center">
           <div
             ref={containerRef}
-            className="flex gap-6 px-6"
+            className="flex gap-6 px-6 md:px-8 lg:px-10"
             style={{
               transform: `translate3d(${translateX}px, 0, 0)`,
               WebkitTransform: `translate3d(${translateX}px, 0, 0)`,
@@ -121,7 +127,7 @@ export function GallerySection() {
             {images.map((image, index) => (
               <div
                 key={index}
-                className="relative h-[60vh] w-[85vw] flex-shrink-0 overflow-hidden rounded-2xl md:w-[60vw] lg:w-[45vw]"
+                className="relative h-[58vh] w-[85vw] flex-shrink-0 overflow-hidden rounded-2xl md:h-[60vh] md:w-[58vw] lg:h-[62vh] lg:w-[42vw]"
                 style={{
                   transform: "translateZ(0)",
                   WebkitTransform: "translateZ(0)",
@@ -134,9 +140,11 @@ export function GallerySection() {
                   className="object-cover"
                   priority={index < 3}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-transparent" />
                 <div className="absolute bottom-6 left-6">
-                  <span className="text-sm font-medium text-white">{image.alt}</span>
+                  <span className="text-sm font-medium text-white md:text-[15px]">
+                    {image.alt}
+                  </span>
                 </div>
               </div>
             ))}
