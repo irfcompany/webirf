@@ -12,13 +12,13 @@ export function GallerySection() {
 
   const images = [
     { src: "/images/galeria1.jpeg", alt: "Instalación de ductos HVAC" },
-    { src: "/images/galeria2.jpeg", alt: "Sistema de ductería industrial" },
-    { src: "/images/galeria3.jpeg", alt: "Fabricación y soldadura de ductería" },
-    { src: "/images/galeria4.jpeg", alt: "Línea de proceso con ductería industrial" },
-    { src: "/images/galeria5.jpeg", alt: "Estructuras metálicas" },
-    { src: "/images/galeria6.jpeg", alt: "Mantenimiento industrial en campo" },
+    { src: "/images/galeria2.jpeg", alt: "Inyección de aire a pleno" },
+    { src: "/images/galeria3.jpeg", alt: "Pailería y trazos industriales" },
+    { src: "/images/galeria4.jpeg", alt: "Inyección directa de manejadoras industriales" },
+    { src: "/images/galeria5.jpeg", alt: "Estructuras metálicas y laminados KR18" },
+    { src: "/images/galeria6.jpeg", alt: "Mantenimiento industrial" },
     { src: "/images/galeria7.jpeg", alt: "Sistemas de refrigeración" },
-    { src: "/images/galeria8.jpeg", alt: "Instalaciones industriales especiales" },
+    { src: "/images/galeria8.jpeg", alt: "Aislamientos térmicos especializados" },
   ];
 
   useEffect(() => {
@@ -113,7 +113,7 @@ export function GallerySection() {
         <div className="flex h-full items-center">
           <div
             ref={containerRef}
-            className="flex gap-6 px-6 md:px-8 lg:px-10"
+            className="flex gap-6 pl-16 pr-6 md:gap-7 md:pl-20 md:pr-8 lg:gap-8 lg:pl-24 lg:pr-10"
             style={{
               transform: `translate3d(${translateX}px, 0, 0)`,
               WebkitTransform: `translate3d(${translateX}px, 0, 0)`,
@@ -127,7 +127,7 @@ export function GallerySection() {
             {images.map((image, index) => (
               <div
                 key={index}
-                className="relative h-[58vh] w-[85vw] flex-shrink-0 overflow-hidden rounded-2xl md:h-[60vh] md:w-[58vw] lg:h-[62vh] lg:w-[42vw]"
+                className="relative h-[58vh] w-[82vw] flex-shrink-0 overflow-hidden rounded-2xl md:h-[60vh] md:w-[54vw] lg:h-[62vh] lg:w-[38vw]"
                 style={{
                   transform: "translateZ(0)",
                   WebkitTransform: "translateZ(0)",
@@ -141,7 +141,7 @@ export function GallerySection() {
                   priority={index < 3}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-transparent" />
-                <div className="absolute bottom-6 left-6">
+                <div className="absolute bottom-6 left-6 pr-4">
                   <span className="text-sm font-medium text-white md:text-[15px]">
                     {image.alt}
                   </span>
