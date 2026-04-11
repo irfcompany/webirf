@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://irf.com.mx/sitemap.xml",
+    sitemap: "https://www.irf.com.mx/sitemap.xml",
   };
 }
