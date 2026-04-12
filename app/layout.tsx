@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.irf.com.mx"),
+  alternates: {
+    canonical: "https://www.irf.com.mx",
+  },
   title: "IRF | Servicios industriales, ductería, HVAC y mantenimiento en Monterrey",
   description:
     "Empresa mexicana especializada en ductería HVAC e industrial, aislamiento térmico, recubrimientos, refrigeración, fabricación, montaje, mantenimiento industrial, corte industrial CNC y soluciones técnicas con cobertura en Monterrey, Nuevo León y México.",
